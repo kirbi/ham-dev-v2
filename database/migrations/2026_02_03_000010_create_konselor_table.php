@@ -1,0 +1,26 @@
+<?php
+// database/migrations/2026_02_03_000010_create_konselor_table.php
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('konselor', function (Blueprint $table) {
+            $table->id('id_konselor');
+            $table->string('nama', 100);
+            $table->string('nip', 50)->nullable();
+            $table->string('no_telepon', 20)->nullable();
+            $table->string('email', 100)->nullable();
+            $table->boolean('deleted')->default(false);
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('konselor');
+    }
+};
