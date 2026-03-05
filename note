@@ -1,0 +1,32 @@
+
+Ini flow lengkapnya di sistem baru:
+
+Flow Sistem Baru
+1. User buka app pertama kali → /
+HomeController::index() punya middleware auth. Karena belum login, Laravel otomatis redirect ke /login.
+
+2. Halaman Login → /login
+Ditangani langsung oleh Livewire App\Livewire\Auth\Login (bukan controller lama). User isi email + password, klik Masuk.
+
+Setelah berhasil login:
+
+
+redirect()->intended(route('dashboard'))
+→ keduanya, admin maupun konselor, diarahkan ke /dashboard.
+
+3. Dashboard /dashboard → unified
+Route ini memiliki middleware role:admin,konselor — artinya satu dashboard untuk keduanya. Ini adalah keputusan desain yang sudah diimplementasi: menghilangkan redundansi adminHome vs konselorHome dari sistem lama.
+
+Apakah sudah cover semua flow?
+Skenario	Status	Keterangan
+Buka / tanpa login	✅	Redirect ke /login
+Login sebagai admin	✅	→ /dashboard
+Login sebagai konselor	✅	→ /dashboard
+Akses halaman admin-only tanpa role	✅	Middleware role:admin menolak
+Lupa password	✅	/forgot-password → Livewire
+Logout	✅	POST /logout → redirect ke /login
+Email belum verified	✅	/email/verify → Livewire
+Satu catatan
+Di sistem lama, HomeController memiliki adminHome() dan konselorHome() yang me-render view berbeda (admin.adminHome vs konselor.konselorHome). Di sistem baru ini sengaja disatukan — keduanya lihat dashboard yang sama — sesuai dengan kriteria "function tidak redundan" yang diminta.
+
+Jika ke depan ingin ada konten berbeda per role di dashboard yang sama, bisa dilakukan di dalam Livewire Dashboard\Index dengan kondisi auth()->user()->hasRole('admin') tanpa perlu memisahkan route/controller.
