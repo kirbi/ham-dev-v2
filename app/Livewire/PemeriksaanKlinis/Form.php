@@ -38,17 +38,17 @@ class Form extends Component
         if ($id) {
             $data = PemeriksaanKlinis::find($id);
             if ($data) {
-                $this->id_pemeriksaan_klinis = $data->id_pemeriksaan_klinis;
-                $this->id_pasien = $data->id_pasien;
+                $this->id_pemeriksaan_klinis = $data->id;
+                $this->id_pasien = $data->pasien_id;
                 $this->standar_klinis = $data->standar_klinis;
                 $this->jumlah_cd4 = $data->jumlah_cd4;
                 $this->viral_load = $data->viral_load;
                 $this->tanggal_pemeriksaan = $data->tanggal_pemeriksaan;
                 $this->tanggal_pemeriksaan_selanjutnya = $data->tanggal_pemeriksaan_selanjutnya;
-                $this->id_status_fungsional = $data->id_status_fungsional;
+                $this->id_status_fungsional = $data->status_fungsional_id;
                 $this->lain_lain = $data->lain_lain;
                 $this->berat_badan = $data->berat_badan;
-                $this->id_kategori_pemeriksaan = $data->id_kategori_pemeriksaan;
+                $this->id_kategori_pemeriksaan = $data->kategori_pemeriksaan_id;
             }
         }
     }
@@ -57,18 +57,18 @@ class Form extends Component
     {
         $this->validate();
         PemeriksaanKlinis::updateOrCreate(
-            ['id_pemeriksaan_klinis' => $this->id_pemeriksaan_klinis],
+            ['id' => $this->id_pemeriksaan_klinis],
             [
-                'id_pasien' => $this->id_pasien,
+                'pasien_id' => $this->id_pasien,
                 'standar_klinis' => $this->standar_klinis,
                 'jumlah_cd4' => $this->jumlah_cd4,
                 'viral_load' => $this->viral_load,
                 'tanggal_pemeriksaan' => $this->tanggal_pemeriksaan,
                 'tanggal_pemeriksaan_selanjutnya' => $this->tanggal_pemeriksaan_selanjutnya,
-                'id_status_fungsional' => $this->id_status_fungsional,
+                'status_fungsional_id' => $this->id_status_fungsional,
                 'lain_lain' => $this->lain_lain,
                 'berat_badan' => $this->berat_badan,
-                'id_kategori_pemeriksaan' => $this->id_kategori_pemeriksaan,
+                'kategori_pemeriksaan_id' => $this->id_kategori_pemeriksaan,
                 'deleted' => 0
             ]
         );

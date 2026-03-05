@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = AlasanSubstitusi::find($id);
             if ($data) {
-                $this->id_alasan_substitusi = $data->id_alasan_substitusi;
+                $this->id_alasan_substitusi = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         AlasanSubstitusi::updateOrCreate(
-            ['id_alasan_substitusi' => $this->id_alasan_substitusi],
+            ['id' => $this->id_alasan_substitusi],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Alasan Substitusi berhasil disimpan.');

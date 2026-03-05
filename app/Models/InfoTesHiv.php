@@ -8,17 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class InfoTesHiv extends Model
 {
     use HasFactory;
-    
-    protected $table = 'mref_info_tes_hiv';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_info_tes_hiv';
 
-    
     protected $fillable = [
-        'deleted', 'nama'
+        'id_pasien', 'tanggal_tes', 'hasil_tes', 'deleted'
     ];
+
+    // Relationships remain unchanged
 }

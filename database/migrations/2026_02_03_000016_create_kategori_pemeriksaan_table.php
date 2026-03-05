@@ -8,8 +8,8 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('kategori_pemeriksaan', function (Blueprint $table) {
-            $table->id('id_kategori_pemeriksaan');
+        Schema::create('kategori_pemeriksaans', function (Blueprint $table) {
+            $table->id();
             $table->string('nama', 100);
             $table->boolean('deleted')->default(false);
             $table->timestamps();
@@ -18,6 +18,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('kategori_pemeriksaan');
+        Schema::dropIfExists('kategori_pemeriksaans');
     }
 };

@@ -8,20 +8,20 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('type', 20)->default('admin'); // admin, konselor, dokter
-            $table->rememberToken();
-            $table->timestamps();
-        });
+        // Add 'type' column to existing users table if not present
+        if (!Schema::hasColumn('users', 'type')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->string('type', 20)->default('admin')->after('password'); // admin, konselor
+            });
+        }
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        if (Schema::hasColumn('users', 'type')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->dropColumn('type');
+            });
+        }
     }
 };

@@ -9,35 +9,19 @@ class Konselor extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_konselor';
-    protected $primaryKey = 'id_konselor';
-
-    
     protected $fillable = [
-        'deleted', 'email',
-        'nama',
-        'alamat',
-        'no_hp',
-        'nik',
-        'nip',
-        'jenis_kelamin',
-        'tempat_lahir',
-        'tanggal_lahir',
-        'id_pendidikan',
-        'tanggal_sertifikasi',
-        'status_pegawai',
-        'id_status_pernikahan'
+        'nama', 'email', 'no_telepon', 'alamat', 'deleted'
     ];
     
     public function pasiens(){
-        return $this->hasMany(Pasien::class);
+        return $this->hasMany(Pasien::class, 'konselor_id');
     }
     
     public function pendidikan(){
-        return $this->belongsTo(Pendidikan::class, 'id_pendidikan', 'id_pendidikan');
+        return $this->belongsTo(Pendidikan::class, 'pendidikan_id');
     }
     
     public function statusPernikahan(){
-        return $this->belongsTo(StatusPernikahan::class, 'id_status_pernikahan', 'id_status_pernikahan');
+        return $this->belongsTo(StatusPernikahan::class, 'status_pernikahan_id');
     }
 }

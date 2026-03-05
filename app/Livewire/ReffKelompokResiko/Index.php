@@ -14,7 +14,7 @@ class Index extends Component
 
     public function delete($id)
     {
-        KelompokResiko::where('id_kelompok_resiko', $id)->update(['deleted' => 1]);
+        KelompokResiko::where('id', $id)->update(['deleted' => 1]);
         session()->flash('success', 'Kelompok Resiko berhasil dihapus.');
     }
 

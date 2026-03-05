@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = PaduanTb::find($id);
             if ($data) {
-                $this->id_paduan_tb = $data->id_paduan_tb;
+                $this->id_paduan_tb = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         PaduanTb::updateOrCreate(
-            ['id_paduan_tb' => $this->id_paduan_tb],
+            ['id' => $this->id_paduan_tb],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Paduan TB berhasil disimpan.');

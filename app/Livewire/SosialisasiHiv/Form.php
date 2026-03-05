@@ -37,11 +37,16 @@ class Form extends Component
         if ($id) {
             $data = SosialisasiHiv::find($id);
             if ($data) {
-                $this->fill($data->only([
-                    'id_sosialisasi_hiv','nama_kegiatan','target_kegiatan','tempat_kegiatan',
-                    'tanggal_kegiatan','peserta_hadir','id_kabupaten','id_kecamatan',
-                    'nama_narahubung','kontak_narahubung',
-                ]));
+                $this->id_sosialisasi_hiv = $data->id;
+                $this->nama_kegiatan = $data->nama_kegiatan;
+                $this->target_kegiatan = $data->target_kegiatan;
+                $this->tempat_kegiatan = $data->tempat_kegiatan;
+                $this->tanggal_kegiatan = $data->tanggal_kegiatan;
+                $this->peserta_hadir = $data->peserta_hadir;
+                $this->id_kabupaten = $data->kabupaten_id;
+                $this->id_kecamatan = $data->kecamatan_id;
+                $this->nama_narahubung = $data->nama_narahubung;
+                $this->kontak_narahubung = $data->kontak_narahubung;
             }
         }
     }
@@ -50,15 +55,15 @@ class Form extends Component
     {
         $this->validate();
         SosialisasiHiv::updateOrCreate(
-            ['id_sosialisasi_hiv' => $this->id_sosialisasi_hiv],
+            ['id' => $this->id_sosialisasi_hiv],
             [
                 'nama_kegiatan'     => $this->nama_kegiatan,
                 'target_kegiatan'   => $this->target_kegiatan,
                 'tempat_kegiatan'   => $this->tempat_kegiatan,
                 'tanggal_kegiatan'  => $this->tanggal_kegiatan,
                 'peserta_hadir'     => $this->peserta_hadir,
-                'id_kabupaten'      => $this->id_kabupaten,
-                'id_kecamatan'      => $this->id_kecamatan,
+                'kabupaten_id'      => $this->id_kabupaten,
+                'kecamatan_id'      => $this->id_kecamatan,
                 'nama_narahubung'   => $this->nama_narahubung,
                 'kontak_narahubung' => $this->kontak_narahubung,
                 'deleted' => 0,
@@ -72,7 +77,7 @@ class Form extends Component
     {
         $kabupatens = Kabupaten::where('deleted', 0)->orderBy('nama')->get();
         $kecamatans = $this->id_kabupaten
-            ? Kecamatan::where('id_kabupaten', $this->id_kabupaten)->where('deleted', 0)->orderBy('nama')->get()
+            ? Kecamatan::where('kabupaten_id', $this->id_kabupaten)->where('deleted', 0)->orderBy('nama')->get()
             : collect();
         return view('livewire.sosialisasi-hiv.form', compact('kabupatens', 'kecamatans'));
     }

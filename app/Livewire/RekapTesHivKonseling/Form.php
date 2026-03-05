@@ -25,8 +25,8 @@ class Form extends Component
         if ($id) {
             $data = RekapTesHivKonseling::find($id);
             if ($data) {
-                $this->id_rekap_tes_hiv_konseling = $data->id_rekap_tes_hiv_konseling;
-                $this->id_konseling = $data->id_konseling;
+                $this->id_rekap_tes_hiv_konseling = $data->id;
+                $this->id_konseling = $data->konseling_id;
                 $this->hasil = $data->hasil;
                 $this->tempat_tes = $data->tempat_tes;
                 $this->tanggal = $data->tanggal;
@@ -38,9 +38,9 @@ class Form extends Component
     {
         $this->validate();
         RekapTesHivKonseling::updateOrCreate(
-            ['id_rekap_tes_hiv_konseling' => $this->id_rekap_tes_hiv_konseling],
+            ['id' => $this->id_rekap_tes_hiv_konseling],
             [
-                'id_konseling' => $this->id_konseling,
+                'konseling_id' => $this->id_konseling,
                 'hasil' => $this->hasil,
                 'tempat_tes' => $this->tempat_tes,
                 'tanggal' => $this->tanggal,

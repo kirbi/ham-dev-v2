@@ -9,24 +9,16 @@ class FaktorResikoPasien extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_faktor_resiko_pasien';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_faktor_resiko_pasien';
 
-    
     protected $fillable = [
-        'deleted','id_faktor_resiko', 'id_pasien'
+        'pasien_id', 'faktor_resiko_id', 'deskripsi', 'deleted'
     ];
     
     public function faktorResiko(){
-        return $this->belongsTo(FaktorResiko::class, 'id_faktor_resiko', 'id_faktor_resiko');
+        return $this->belongsTo(FaktorResiko::class, 'faktor_resiko_id');
     }
 
     public function pasien(){
-        return $this->belongsTo(Pasien::class, 'id_pasien', 'id_pasien');
+        return $this->belongsTo(Pasien::class, 'pasien_id');
     }
 }

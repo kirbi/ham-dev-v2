@@ -14,7 +14,7 @@ class Index extends Component
 
     public function delete($id)
     {
-        MitraSeksual::where('id_mitra_seksual', $id)->update(['deleted' => 1]);
+        MitraSeksual::where('id', $id)->update(['deleted' => 1]);
         session()->flash('success', 'Mitra Seksual berhasil dihapus.');
     }
 

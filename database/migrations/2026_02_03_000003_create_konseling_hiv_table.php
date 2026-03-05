@@ -8,22 +8,22 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('konseling_hiv', function (Blueprint $table) {
-            $table->id('id_konseling_hiv');
-            $table->foreignId('id_pasien')->constrained('pasien', 'id_pasien')->onDelete('cascade');
+        Schema::create('konseling_hivs', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('pasien_id')->constrained('pasiens')->onDelete('cascade');
             $table->date('tanggal_konseling');
             $table->string('jenis_konseling', 50); // pra, pasca, lanjutan
             $table->text('catatan')->nullable();
-            $table->foreignId('id_konselor')->nullable()->constrained('konselor', 'id_konselor');
+            $table->foreignId('konselor_id')->nullable()->constrained('konselors');
             $table->timestamps();
             $table->softDeletes();
-            $table->index('id_pasien');
+            $table->index('pasien_id');
             $table->index('tanggal_konseling');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('konseling_hiv');
+        Schema::dropIfExists('konseling_hivs');
     }
 };

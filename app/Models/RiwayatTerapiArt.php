@@ -9,29 +9,21 @@ class RiwayatTerapiArt extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_riwayat_terapi_art';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_riwayat_terapi_art';
-
     
     protected $fillable = [
-        'deleted', 'pernah_menerima', 'id_jenis_terapi_art', 'id_tempat_art', 'id_paduan_art', 'dosis_art', 'lama_penggunaan', 'id_pasien'  
+        'deleted', 'pernah_menerima', 'jenis_terapi_art_id', 'tempat_art_id', 'paduan_art_id', 'dosis_art', 'lama_penggunaan', 'pasien_id'  
     ];
 
     public function pasien(){
-        return $this->belongsTo(Pasien::class, 'id_pasien', 'id_pasien');
+        return $this->belongsTo(Pasien::class, 'pasien_id');
     }
     public function paduanArt(){
-        return $this->belongsTo(PaduanArt::class, 'id_paduan_art', 'id_paduan_art');
+        return $this->belongsTo(PaduanArt::class, 'paduan_art_id');
     }
     public function tempatTerapi(){
-        return $this->belongsTo(TempatTerapi::class, 'id_tempat_art', 'id_tempat_terapi');
+        return $this->belongsTo(TempatTerapi::class, 'tempat_art_id');
     }
     public function jenisTerapi(){
-        return $this->belongsTo(JenisTerapi::class, 'id_jenis_terapi_art', 'id_jenis_terapi');
+        return $this->belongsTo(JenisTerapi::class, 'jenis_terapi_art_id');
     }
 }

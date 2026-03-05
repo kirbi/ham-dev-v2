@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = TempatTerapi::find($id);
             if ($data) {
-                $this->id_tempat_terapi = $data->id_tempat_terapi;
+                $this->id_tempat_terapi = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         TempatTerapi::updateOrCreate(
-            ['id_tempat_terapi' => $this->id_tempat_terapi],
+            ['id' => $this->id_tempat_terapi],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Tempat Terapi berhasil disimpan.');

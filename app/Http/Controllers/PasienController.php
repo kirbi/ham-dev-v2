@@ -121,7 +121,7 @@ class PasienController extends Controller
         $statusFungsional = StatusFungsional::orderBy('nama', 'ASC')->where(['deleted' => 0])->get();
         $statusTb = StatusTb::orderBy('nama', 'ASC')->where(['deleted' => 0])->get();
         $followupArt = RiwayatPerawatanPasien::orderBy('tanggal_pengobatan', 'ASC')
-            ->where(['id_pasien' => $id, 'deleted' => 0])
+            ->where(['pasien_id' => $id, 'deleted' => 0])
             ->get();
 
         $content = view('pasien.pdf', compact(

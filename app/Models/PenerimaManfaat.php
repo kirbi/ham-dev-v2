@@ -9,5 +9,5 @@ class PenerimaManfaat extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_penerima_manfaat';
+
 }

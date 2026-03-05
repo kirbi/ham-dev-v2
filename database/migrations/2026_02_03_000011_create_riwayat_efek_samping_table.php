@@ -8,17 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('riwayat_efek_samping', function (Blueprint $table) {
+        Schema::create('riwayat_efek_sampings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_riwayat_perawatan_pasien')->constrained('riwayat_perawatan_pasien', 'id_riwayat_perawatan_pasien')->onDelete('cascade');
-            $table->foreignId('id_efek_samping')->constrained('efek_samping', 'id_efek_samping')->onDelete('cascade');
+            $table->foreignId('riwayat_perawatan_pasien_id')->constrained('riwayat_perawatan_pasiens')->onDelete('cascade');
+            $table->foreignId('efek_samping_id')->constrained('efek_sampings')->onDelete('cascade');
             $table->timestamps();
-            $table->unique(['id_riwayat_perawatan_pasien', 'id_efek_samping'], 'riwayat_efek_samping_unique');
+            $table->unique(['riwayat_perawatan_pasien_id', 'efek_samping_id'], 'riwayat_efek_samping_unique');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('riwayat_efek_samping');
+        Schema::dropIfExists('riwayat_efek_sampings');
     }
 };

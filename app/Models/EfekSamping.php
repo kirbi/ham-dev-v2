@@ -9,14 +9,6 @@ class EfekSamping extends Model
 {
     use HasFactory;
     
-    protected $table = 'mref_efek_samping';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_efek_samping';
-
     
     protected $fillable = [
         'deleted', 'kode', 'nama', 'deskripsi'

@@ -8,17 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('riwayat_infeksi_oportunistik', function (Blueprint $table) {
+        Schema::create('riwayat_infeksi_oportunistiks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_riwayat_perawatan_pasien')->constrained('riwayat_perawatan_pasien', 'id_riwayat_perawatan_pasien')->onDelete('cascade');
-            $table->foreignId('id_infeksi_oportunistik')->constrained('infeksi_oportunistik', 'id_infeksi_oportunistik')->onDelete('cascade');
+            $table->foreignId('riwayat_perawatan_pasien_id')->constrained('riwayat_perawatan_pasiens')->onDelete('cascade');
+            $table->foreignId('infeksi_oportunistik_id')->constrained('infeksi_oportunistiks')->onDelete('cascade');
             $table->timestamps();
-            $table->unique(['id_riwayat_perawatan_pasien', 'id_infeksi_oportunistik'], 'riwayat_infeksi_oportunistik_unique');
+            $table->unique(['riwayat_perawatan_pasien_id', 'infeksi_oportunistik_id'], 'riwayat_infeksi_oportunistik_unique');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('riwayat_infeksi_oportunistik');
+        Schema::dropIfExists('riwayat_infeksi_oportunistiks');
     }
 };

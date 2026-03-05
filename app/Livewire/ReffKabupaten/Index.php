@@ -16,7 +16,7 @@ class Index extends Component
 
     public function delete($id)
     {
-        Kabupaten::where('id_kabupaten', $id)->update(['deleted' => 1]);
+        Kabupaten::where('id', $id)->update(['deleted' => 1]);
         session()->flash('success', 'Kabupaten berhasil dihapus.');
     }
 
@@ -27,7 +27,7 @@ class Index extends Component
             ->orderBy('nama', 'ASC');
 
         if ($this->filterProvinsi) {
-            $query->where('id_provinsi', $this->filterProvinsi);
+            $query->where('provinsi_id', $this->filterProvinsi);
         }
 
         $items = $query->paginate(10);

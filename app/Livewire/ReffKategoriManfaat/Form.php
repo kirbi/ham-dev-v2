@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = KategoriManfaat::find($id);
             if ($data) {
-                $this->id_kategori_manfaat = $data->id_kategori_manfaat;
+                $this->id_kategori_manfaat = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         KategoriManfaat::updateOrCreate(
-            ['id_kategori_manfaat' => $this->id_kategori_manfaat],
+            ['id' => $this->id_kategori_manfaat],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Kategori Manfaat berhasil disimpan.');

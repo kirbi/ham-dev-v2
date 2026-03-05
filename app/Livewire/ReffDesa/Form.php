@@ -22,9 +22,9 @@ class Form extends Component
         if ($id) {
             $data = Desa::find($id);
             if ($data) {
-                $this->id_desa = $data->id_desa;
+                $this->id_desa = $data->id;
                 $this->nama = $data->nama;
-                $this->id_kecamatan = $data->id_kecamatan;
+                $this->id_kecamatan = $data->kecamatan_id;
             }
         }
     }
@@ -33,8 +33,8 @@ class Form extends Component
     {
         $this->validate();
         Desa::updateOrCreate(
-            ['id_desa' => $this->id_desa],
-            ['nama' => $this->nama, 'id_kecamatan' => $this->id_kecamatan, 'deleted' => 0]
+            ['id' => $this->id_desa],
+            ['nama' => $this->nama, 'kecamatan_id' => $this->id_kecamatan, 'deleted' => 0]
         );
         session()->flash('success', 'Desa berhasil disimpan.');
         $this->redirect(route('reff-desa.index'), navigate: true);

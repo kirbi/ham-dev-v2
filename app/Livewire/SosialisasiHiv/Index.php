@@ -18,7 +18,7 @@ class Index extends Component
 
     public function delete($id)
     {
-        SosialisasiHiv::where('id_sosialisasi_hiv', $id)->update(['deleted' => 1]);
+        SosialisasiHiv::where('id', $id)->update(['deleted' => 1]);
         session()->flash('success', 'Data sosialisasi berhasil dihapus.');
     }
 
@@ -29,16 +29,16 @@ class Index extends Component
             ->orderBy('tanggal_kegiatan', 'DESC');
 
         if ($this->kabupaten) {
-            $query->where('id_kabupaten', $this->kabupaten);
+            $query->where('kabupaten_id', $this->kabupaten);
         }
         if ($this->kecamatan) {
-            $query->where('id_kecamatan', $this->kecamatan);
+            $query->where('kecamatan_id', $this->kecamatan);
         }
 
         $items = $query->paginate(10);
         $kabupatens = Kabupaten::where('deleted', 0)->orderBy('nama')->get();
         $kecamatans = $this->kabupaten
-            ? Kecamatan::where('id_kabupaten', $this->kabupaten)->where('deleted', 0)->orderBy('nama')->get()
+            ? Kecamatan::where('kabupaten_id', $this->kabupaten)->where('deleted', 0)->orderBy('nama')->get()
             : collect();
 
         return view('livewire.sosialisasi-hiv.index', compact('items', 'kabupatens', 'kecamatans'));

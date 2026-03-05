@@ -22,9 +22,9 @@ class Form extends Component
         if ($id) {
             $data = InfoTesHivKonseling::find($id);
             if ($data) {
-                $this->id_info_tes_hiv_konseling = $data->id_info_tes_hiv_konseling;
-                $this->id_konseling = $data->id_konseling;
-                $this->id_info_tes_hiv = $data->id_info_tes_hiv;
+                $this->id_info_tes_hiv_konseling = $data->id;
+                $this->id_konseling = $data->konseling_id;
+                $this->id_info_tes_hiv = $data->info_tes_hiv_id;
             }
         }
     }
@@ -33,10 +33,10 @@ class Form extends Component
     {
         $this->validate();
         InfoTesHivKonseling::updateOrCreate(
-            ['id_info_tes_hiv_konseling' => $this->id_info_tes_hiv_konseling],
+            ['id' => $this->id_info_tes_hiv_konseling],
             [
-                'id_konseling' => $this->id_konseling,
-                'id_info_tes_hiv' => $this->id_info_tes_hiv,
+                'konseling_id' => $this->id_konseling,
+                'info_tes_hiv_id' => $this->id_info_tes_hiv,
                 'deleted' => 0
             ]
         );

@@ -36,14 +36,14 @@ class Form extends Component
         if ($id) {
             $data = RiwayatMitraSeksual::find($id);
             if ($data) {
-                $this->id_riwayat_mitra_seksual = $data->id_riwayat_mitra_seksual;
-                $this->id_pasien = $data->id_pasien;
+                $this->id_riwayat_mitra_seksual = $data->id;
+                $this->id_pasien = $data->pasien_id;
                 $this->nama = $data->nama;
                 $this->umur = $data->umur;
                 $this->umur_bulan = $data->umur_bulan;
-                $this->id_hubungan = $data->id_hubungan;
+                $this->id_hubungan = $data->hubungan_id;
                 $this->komsumsi_art = $data->komsumsi_art;
-                $this->id_status_hiv = $data->id_status_hiv;
+                $this->id_status_hiv = $data->status_hiv_id;
                 $this->no_reg_nasional = $data->no_reg_nasional;
             }
         }
@@ -53,15 +53,15 @@ class Form extends Component
     {
         $this->validate();
         RiwayatMitraSeksual::updateOrCreate(
-            ['id_riwayat_mitra_seksual' => $this->id_riwayat_mitra_seksual],
+            ['id' => $this->id_riwayat_mitra_seksual],
             [
-                'id_pasien' => $this->id_pasien,
+                'pasien_id' => $this->id_pasien,
                 'nama' => $this->nama,
                 'umur' => $this->umur,
                 'umur_bulan' => $this->umur_bulan,
-                'id_hubungan' => $this->id_hubungan,
+                'hubungan_id' => $this->id_hubungan,
                 'komsumsi_art' => $this->komsumsi_art,
-                'id_status_hiv' => $this->id_status_hiv,
+                'status_hiv_id' => $this->id_status_hiv,
                 'no_reg_nasional' => $this->no_reg_nasional,
                 'deleted' => 0
             ]

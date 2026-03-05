@@ -9,24 +9,16 @@ class RiwayatMitraSeksual extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_riwayat_mitra_seksual';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_riwayat_mitra_seksual';
-
     
     protected $fillable = [
-        'deleted', 'nama', 'umur', 'umur_bulan', 'id_hubungan', 'no_reg_nasional', 'id_status_hiv', 'komsumsi_art', 'id_pasien'
+        'deleted', 'nama', 'umur', 'umur_bulan', 'hubungan_id', 'no_reg_nasional', 'status_hiv_id', 'komsumsi_art', 'pasien_id'
     ];
     
     public function statusHiv(){
-        return $this->belongsTo(StatusHiv::class, 'id_status_hiv', 'id_status_hiv');
+        return $this->belongsTo(StatusHiv::class, 'status_hiv_id');
     }
 
     public function hubunganMitra(){
-        return $this->belongsTo(MitraSeksual::class, 'id_hubungan', 'id_mitra_seksual');
+        return $this->belongsTo(MitraSeksual::class, 'hubungan_id');
     }
 }

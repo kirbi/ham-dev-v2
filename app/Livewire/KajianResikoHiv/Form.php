@@ -24,9 +24,9 @@ class Form extends Component
         if ($id) {
             $data = KajianResikoHiv::find($id);
             if ($data) {
-                $this->id_kajian_resiko_hiv = $data->id_kajian_resiko_hiv;
-                $this->id_konseling = $data->id_konseling;
-                $this->id_tingkat_resiko_hiv = $data->id_tingkat_resiko_hiv;
+                $this->id_kajian_resiko_hiv = $data->id;
+                $this->id_konseling = $data->konseling_id;
+                $this->id_tingkat_resiko_hiv = $data->tingkat_resiko_hiv_id;
                 $this->tanggal = $data->tanggal;
             }
         }
@@ -36,10 +36,10 @@ class Form extends Component
     {
         $this->validate();
         KajianResikoHiv::updateOrCreate(
-            ['id_kajian_resiko_hiv' => $this->id_kajian_resiko_hiv],
+            ['id' => $this->id_kajian_resiko_hiv],
             [
-                'id_konseling' => $this->id_konseling,
-                'id_tingkat_resiko_hiv' => $this->id_tingkat_resiko_hiv,
+                'konseling_id' => $this->id_konseling,
+                'tingkat_resiko_hiv_id' => $this->id_tingkat_resiko_hiv,
                 'tanggal' => $this->tanggal,
                 'deleted' => 0
             ]

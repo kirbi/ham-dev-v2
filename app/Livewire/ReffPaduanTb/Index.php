@@ -14,7 +14,7 @@ class Index extends Component
 
     public function delete($id)
     {
-        PaduanTb::where('id_paduan_tb', $id)->update(['deleted' => 1]);
+        PaduanTb::where('id', $id)->update(['deleted' => 1]);
         session()->flash('success', 'Paduan TB berhasil dihapus.');
     }
 

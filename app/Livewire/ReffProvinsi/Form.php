@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = Provinsi::find($id);
             if ($data) {
-                $this->id_provinsi = $data->id_provinsi;
+                $this->id_provinsi = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         Provinsi::updateOrCreate(
-            ['id_provinsi' => $this->id_provinsi],
+            ['id' => $this->id_provinsi],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Provinsi berhasil disimpan.');

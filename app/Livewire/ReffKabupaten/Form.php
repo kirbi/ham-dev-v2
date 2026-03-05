@@ -22,9 +22,9 @@ class Form extends Component
         if ($id) {
             $data = Kabupaten::find($id);
             if ($data) {
-                $this->id_kabupaten = $data->id_kabupaten;
+                $this->id_kabupaten = $data->id;
                 $this->nama = $data->nama;
-                $this->id_provinsi = $data->id_provinsi;
+                $this->id_provinsi = $data->provinsi_id;
             }
         }
     }
@@ -33,8 +33,8 @@ class Form extends Component
     {
         $this->validate();
         Kabupaten::updateOrCreate(
-            ['id_kabupaten' => $this->id_kabupaten],
-            ['nama' => $this->nama, 'id_provinsi' => $this->id_provinsi, 'deleted' => 0]
+            ['id' => $this->id_kabupaten],
+            ['nama' => $this->nama, 'provinsi_id' => $this->id_provinsi, 'deleted' => 0]
         );
         session()->flash('success', 'Kabupaten berhasil disimpan.');
         $this->redirect(route('reff-kabupaten.index'), navigate: true);

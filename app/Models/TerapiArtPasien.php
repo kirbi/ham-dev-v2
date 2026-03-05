@@ -9,28 +9,26 @@ class TerapiArtPasien extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_terapi_art_pasien';
-    protected $primaryKey = 'id_terapi_art_pasien';
     protected $fillable = [
         'deleted',
-        'id_terapi_art_pasien',
-        'id_pasien',
+        'pasien_id',
         'tanggal_mulai',
         'fase',
-        'id_alasan',
+        'alasan_id',
         'penjelasan',
-        'id_paduan_art',
+        'paduan_art_id',
     ];
+
     public function pasien(){
-        return $this->belongsTo(Pasien::class, 'id_pasien', 'id_pasien');
+        return $this->belongsTo(Pasien::class, 'pasien_id');
     }
 
     public function paduanArt(){
-        return $this->hasOne(PaduanArt::class, 'id_paduan_art', 'id_paduan_art');
+        return $this->belongsTo(PaduanArt::class, 'paduan_art_id');
     }
 
     public function alasan(){
-        return $this->belongsTo(AlasanSubstitusi::class, 'id_alasan', 'id_alasan_substitusi');
+        return $this->belongsTo(AlasanSubstitusi::class, 'alasan_id');
     }
 
 }

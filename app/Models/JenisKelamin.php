@@ -9,14 +9,6 @@ class JenisKelamin extends Model
 {
     use HasFactory;
     
-    protected $table = 'mref_jenis_kelamin';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_jenis_kelamin';
-
     
     protected $fillable = [
         'deleted', 'inisial', 'deskripsi'

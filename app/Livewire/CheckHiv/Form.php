@@ -40,7 +40,7 @@ class Form extends Component
         if ($id) {
             $data = CheckHiv::find($id);
             if ($data) {
-                $this->id_check_hiv = $data->id_check_hiv;
+                $this->id_check_hiv = $data->id;
                 $this->nama_kegiatan = $data->nama_kegiatan;
                 $this->nama_tempat = $data->nama_tempat;
                 $this->deskripsi_kegiatan = $data->deskripsi_kegiatan;
@@ -48,8 +48,8 @@ class Form extends Component
                 $this->hadir = $data->hadir;
                 $this->jumlah_positif = $data->jumlah_positif;
                 $this->jumlah_negatif = $data->jumlah_negatif;
-                $this->id_kabupaten = $data->id_kabupaten;
-                $this->id_kecamatan = $data->id_kecamatan;
+                $this->id_kabupaten = $data->kabupaten_id;
+                $this->id_kecamatan = $data->kecamatan_id;
                 $this->nama_narahubung = $data->nama_narahubung;
                 $this->kontak_narahubung = $data->kontak_narahubung;
             }
@@ -60,7 +60,7 @@ class Form extends Component
     {
         $this->validate();
         CheckHiv::updateOrCreate(
-            ['id_check_hiv' => $this->id_check_hiv],
+            ['id' => $this->id_check_hiv],
             [
                 'nama_kegiatan' => $this->nama_kegiatan,
                 'nama_tempat' => $this->nama_tempat,
@@ -69,8 +69,8 @@ class Form extends Component
                 'hadir' => $this->hadir,
                 'jumlah_positif' => $this->jumlah_positif,
                 'jumlah_negatif' => $this->jumlah_negatif,
-                'id_kabupaten' => $this->id_kabupaten,
-                'id_kecamatan' => $this->id_kecamatan,
+                'kabupaten_id' => $this->id_kabupaten,
+                'kecamatan_id' => $this->id_kecamatan,
                 'nama_narahubung' => $this->nama_narahubung,
                 'kontak_narahubung' => $this->kontak_narahubung,
                 'deleted' => 0
@@ -83,7 +83,7 @@ class Form extends Component
     public function render()
     {
         $kabupatens = Kabupaten::where('deleted', 0)->orderBy('nama')->get();
-        $kecamatans = $this->id_kabupaten ? Kecamatan::where('id_kabupaten', $this->id_kabupaten)->where('deleted', 0)->orderBy('nama')->get() : collect();
+        $kecamatans = $this->id_kabupaten ? Kecamatan::where('kabupaten_id', $this->id_kabupaten)->where('deleted', 0)->orderBy('nama')->get() : collect();
         return view('livewire.check-hiv.form', [
             'kabupatens' => $kabupatens,
             'kecamatans' => $kecamatans

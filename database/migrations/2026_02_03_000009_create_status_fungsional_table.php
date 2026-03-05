@@ -8,8 +8,8 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('status_fungsional', function (Blueprint $table) {
-            $table->id('id_status_fungsional');
+        Schema::create('status_fungsionals', function (Blueprint $table) {
+            $table->id();
             $table->string('nama', 100);
             $table->boolean('deleted')->default(false);
             $table->timestamps();
@@ -18,6 +18,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('status_fungsional');
+        Schema::dropIfExists('status_fungsionals');
     }
 };

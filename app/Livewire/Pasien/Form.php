@@ -129,17 +129,17 @@ class Form extends Component
         $this->jenis_kelamin = $pasien->jenis_kelamin;
         $this->alamat = $pasien->alamat;
         $this->no_hp = $pasien->no_hp;
-        $this->id_pendidikan_terakhir = $pasien->id_pendidikan_terakhir;
-        $this->id_pekerjaan = $pasien->id_pekerjaan;
-        $this->id_status_pernikahan = $pasien->id_status_pernikahan;
-        $this->id_konselor = $pasien->id_konselor;
+        $this->id_pendidikan_terakhir = $pasien->pendidikan_terakhir_id;
+        $this->id_pekerjaan = $pasien->pekerjaan_id;
+        $this->id_status_pernikahan = $pasien->status_pernikahan_id;
+        $this->id_konselor = $pasien->konselor_id;
         $this->agama = $pasien->agama;
         $this->jenis_pasien = $pasien->jenis_pasien;
         $this->status_aktif = $pasien->status_aktif;
-        $this->id_provinsi = $pasien->id_provinsi;
-        $this->id_kabupaten = $pasien->id_kabupaten;
-        $this->id_kecamatan = $pasien->id_kecamatan;
-        $this->id_desa = $pasien->id_desa;
+        $this->id_provinsi = $pasien->provinsi_id;
+        $this->id_kabupaten = $pasien->kabupaten_id;
+        $this->id_kecamatan = $pasien->kecamatan_id;
+        $this->id_desa = $pasien->desa_id;
         $this->tempat_tinggal = $pasien->tempat_tinggal;
         $this->ibu_kandung = $pasien->ibu_kandung;
         $this->tanggal_rujuk_masuk = $pasien->tanggal_rujuk_masuk;
@@ -163,7 +163,7 @@ class Form extends Component
     // Cascading dropdown handlers
     public function updatedIdProvinsi()
     {
-        $this->kabupatens = Kabupaten::where('id_provinsi', $this->id_provinsi)
+        $this->kabupatens = Kabupaten::where('provinsi_id', $this->id_provinsi)
             ->where('deleted', 0)
             ->orderBy('nama', 'ASC')
             ->get();
@@ -174,7 +174,7 @@ class Form extends Component
 
     public function updatedIdKabupaten()
     {
-        $this->kecamatans = Kecamatan::where('id_kabupaten', $this->id_kabupaten)
+        $this->kecamatans = Kecamatan::where('kabupaten_id', $this->id_kabupaten)
             ->where('deleted', 0)
             ->orderBy('nama', 'ASC')
             ->get();
@@ -184,7 +184,7 @@ class Form extends Component
 
     public function updatedIdKecamatan()
     {
-        $this->desas = Desa::where('id_kecamatan', $this->id_kecamatan)
+        $this->desas = Desa::where('kecamatan_id', $this->id_kecamatan)
             ->where('deleted', 0)
             ->orderBy('nama', 'ASC')
             ->get();
@@ -208,17 +208,17 @@ class Form extends Component
                 'jenis_kelamin' => $this->jenis_kelamin,
                 'alamat' => $this->alamat,
                 'no_hp' => $this->no_hp,
-                'id_pendidikan_terakhir' => $this->id_pendidikan_terakhir,
-                'id_pekerjaan' => $this->id_pekerjaan,
-                'id_status_pernikahan' => $this->id_status_pernikahan,
-                'id_konselor' => $this->id_konselor,
+                'pendidikan_terakhir_id' => $this->id_pendidikan_terakhir,
+                'pekerjaan_id' => $this->id_pekerjaan,
+                'status_pernikahan_id' => $this->id_status_pernikahan,
+                'konselor_id' => $this->id_konselor,
                 'agama' => $this->agama,
                 'jenis_pasien' => $this->jenis_pasien,
                 'status_aktif' => $this->status_aktif,
-                'id_provinsi' => $this->id_provinsi,
-                'id_kabupaten' => $this->id_kabupaten,
-                'id_kecamatan' => $this->id_kecamatan,
-                'id_desa' => $this->id_desa,
+                'provinsi_id' => $this->id_provinsi,
+                'kabupaten_id' => $this->id_kabupaten,
+                'kecamatan_id' => $this->id_kecamatan,
+                'desa_id' => $this->id_desa,
                 'tempat_tinggal' => $this->tempat_tinggal,
                 'ibu_kandung' => $this->ibu_kandung,
                 'tanggal_rujuk_masuk' => $this->tanggal_rujuk_masuk,

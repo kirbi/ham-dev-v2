@@ -14,7 +14,7 @@ class Index extends Component
 
     public function delete($id)
     {
-        KlasifikasiTb::where('id_klasifikasi_tb', $id)->update(['deleted' => 1]);
+        KlasifikasiTb::where('id', $id)->update(['deleted' => 1]);
         session()->flash('success', 'Klasifikasi TB berhasil dihapus.');
     }
 

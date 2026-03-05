@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = Pendidikan::find($id);
             if ($data) {
-                $this->id_pendidikan = $data->id_pendidikan;
+                $this->id_pendidikan = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         Pendidikan::updateOrCreate(
-            ['id_pendidikan' => $this->id_pendidikan],
+            ['id' => $this->id_pendidikan],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Pendidikan berhasil disimpan.');

@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = KelompokResiko::find($id);
             if ($data) {
-                $this->id_kelompok_resiko = $data->id_kelompok_resiko;
+                $this->id_kelompok_resiko = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         KelompokResiko::updateOrCreate(
-            ['id_kelompok_resiko' => $this->id_kelompok_resiko],
+            ['id' => $this->id_kelompok_resiko],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Kelompok Resiko berhasil disimpan.');

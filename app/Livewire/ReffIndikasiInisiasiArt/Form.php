@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = IndikasiInisiasiArt::find($id);
             if ($data) {
-                $this->id_iiart = $data->id_iiart;
+                $this->id_iiart = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         IndikasiInisiasiArt::updateOrCreate(
-            ['id_iiart' => $this->id_iiart],
+            ['id' => $this->id_iiart],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Indikasi Inisiasi ART berhasil disimpan.');

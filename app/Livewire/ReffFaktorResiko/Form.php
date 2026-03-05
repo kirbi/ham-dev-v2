@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = FaktorResiko::find($id);
             if ($data) {
-                $this->id_faktor_resiko = $data->id_faktor_resiko;
+                $this->id_faktor_resiko = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         FaktorResiko::updateOrCreate(
-            ['id_faktor_resiko' => $this->id_faktor_resiko],
+            ['id' => $this->id_faktor_resiko],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Faktor Resiko berhasil disimpan.');

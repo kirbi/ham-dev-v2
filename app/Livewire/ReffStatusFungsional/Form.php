@@ -23,7 +23,7 @@ class Form extends Component
         if ($id) {
             $data = StatusFungsional::find($id);
             if ($data) {
-                $this->id_status_fungsional = $data->id_status_fungsional;
+                $this->id_status_fungsional = $data->id;
                 $this->nama = $data->nama;
                 $this->kode = $data->kode;
                 $this->deskripsi = $data->deskripsi;
@@ -35,7 +35,7 @@ class Form extends Component
     {
         $this->validate();
         StatusFungsional::updateOrCreate(
-            ['id_status_fungsional' => $this->id_status_fungsional],
+            ['id' => $this->id_status_fungsional],
             ['nama' => $this->nama, 'kode' => $this->kode, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Status Fungsional berhasil disimpan.');

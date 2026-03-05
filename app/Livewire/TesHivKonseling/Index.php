@@ -15,7 +15,7 @@ class Index extends Component
 
     public function delete($id)
     {
-        TesHivKonseling::where('id_tes_hiv_konseling', $id)->update(['deleted' => 1]);
+        TesHivKonseling::where('id', $id)->update(['deleted' => 1]);
         session()->flash('success', 'Data tes HIV berhasil dihapus.');
     }
 

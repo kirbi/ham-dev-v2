@@ -23,9 +23,9 @@ class Form extends Component
         if ($id) {
             $data = FaktorResikoPasien::find($id);
             if ($data) {
-                $this->id_faktor_resiko_pasien = $data->id_faktor_resiko_pasien;
-                $this->id_pasien = $data->id_pasien;
-                $this->id_faktor_resiko = $data->id_faktor_resiko;
+                $this->id_faktor_resiko_pasien = $data->id;
+                $this->id_pasien = $data->pasien_id;
+                $this->id_faktor_resiko = $data->faktor_resiko_id;
             }
         }
     }
@@ -34,10 +34,10 @@ class Form extends Component
     {
         $this->validate();
         FaktorResikoPasien::updateOrCreate(
-            ['id_faktor_resiko_pasien' => $this->id_faktor_resiko_pasien],
+            ['id' => $this->id_faktor_resiko_pasien],
             [
-                'id_pasien' => $this->id_pasien,
-                'id_faktor_resiko' => $this->id_faktor_resiko,
+                'pasien_id' => $this->id_pasien,
+                'faktor_resiko_id' => $this->id_faktor_resiko,
                 'deleted' => 0
             ]
         );

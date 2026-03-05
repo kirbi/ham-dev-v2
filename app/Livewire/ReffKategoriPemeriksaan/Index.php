@@ -14,7 +14,7 @@ class Index extends Component
 
     public function delete($id)
     {
-        KategoriPemeriksaan::where('id_kategori_pemeriksaan', $id)->update(['deleted' => 1]);
+        KategoriPemeriksaan::where('id', $id)->update(['deleted' => 1]);
         session()->flash('success', 'Kategori Pemeriksaan berhasil dihapus.');
     }
 

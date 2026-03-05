@@ -35,11 +35,14 @@ class Form extends Component
         if ($id) {
             $data = RiwayatTerapiArt::find($id);
             if ($data) {
-                $this->fill($data->only([
-                    'id_riwayat_terapi_art','id_pasien','pernah_menerima',
-                    'id_jenis_terapi_art','id_tempat_art','id_paduan_art',
-                    'dosis_art','lama_penggunaan',
-                ]));
+                $this->id_riwayat_terapi_art = $data->id;
+                $this->id_pasien = $data->pasien_id;
+                $this->pernah_menerima = $data->pernah_menerima;
+                $this->id_jenis_terapi_art = $data->jenis_terapi_art_id;
+                $this->id_tempat_art = $data->tempat_art_id;
+                $this->id_paduan_art = $data->paduan_art_id;
+                $this->dosis_art = $data->dosis_art;
+                $this->lama_penggunaan = $data->lama_penggunaan;
             }
         }
     }
@@ -48,13 +51,13 @@ class Form extends Component
     {
         $this->validate();
         RiwayatTerapiArt::updateOrCreate(
-            ['id_riwayat_terapi_art' => $this->id_riwayat_terapi_art],
+            ['id' => $this->id_riwayat_terapi_art],
             [
-                'id_pasien'          => $this->id_pasien,
+                'pasien_id'          => $this->id_pasien,
                 'pernah_menerima'    => $this->pernah_menerima,
-                'id_jenis_terapi_art' => $this->id_jenis_terapi_art,
-                'id_tempat_art'      => $this->id_tempat_art,
-                'id_paduan_art'      => $this->id_paduan_art,
+                'jenis_terapi_art_id' => $this->id_jenis_terapi_art,
+                'tempat_art_id'      => $this->id_tempat_art,
+                'paduan_art_id'      => $this->id_paduan_art,
                 'dosis_art'          => $this->dosis_art,
                 'lama_penggunaan'    => $this->lama_penggunaan,
                 'deleted'            => 0,

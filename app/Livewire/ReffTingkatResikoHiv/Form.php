@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = TingkatResikoHiv::find($id);
             if ($data) {
-                $this->id_tingkat_resiko_hiv = $data->id_tingkat_resiko_hiv;
+                $this->id_tingkat_resiko_hiv = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         TingkatResikoHiv::updateOrCreate(
-            ['id_tingkat_resiko_hiv' => $this->id_tingkat_resiko_hiv],
+            ['id' => $this->id_tingkat_resiko_hiv],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Tingkat Resiko HIV berhasil disimpan.');

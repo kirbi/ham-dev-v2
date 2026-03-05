@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = EntryPoint::find($id);
             if ($data) {
-                $this->id_entry_point = $data->id_entry_point;
+                $this->id_entry_point = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         EntryPoint::updateOrCreate(
-            ['id_entry_point' => $this->id_entry_point],
+            ['id' => $this->id_entry_point],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Entry Point berhasil disimpan.');

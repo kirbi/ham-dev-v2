@@ -14,7 +14,7 @@ class Index extends Component
 
     public function delete($id)
     {
-        IndikasiInisiasiArt::where('id_iiart', $id)->update(['deleted' => 1]);
+        IndikasiInisiasiArt::where('id', $id)->update(['deleted' => 1]);
         session()->flash('success', 'Indikasi Inisiasi ART berhasil dihapus.');
     }
 

@@ -42,12 +42,12 @@ class Form extends Component
         if ($id) {
             $data = PengobatanTbHiv::find($id);
             if ($data) {
-                $this->id_pengobatan_tb_hiv = $data->id_pengobatan_tb_hiv;
-                $this->id_pasien = $data->id_pasien;
-                $this->id_tipe_tb = $data->id_tipe_tb;
-                $this->id_klasifikasi_tb = $data->id_klasifikasi_tb;
-                $this->id_paduan_tb = $data->id_paduan_tb;
-                $this->id_kabupaten_pengobatan = $data->id_kabupaten_pengobatan;
+                $this->id_pengobatan_tb_hiv = $data->id;
+                $this->id_pasien = $data->pasien_id;
+                $this->id_tipe_tb = $data->tipe_tb_id;
+                $this->id_klasifikasi_tb = $data->klasifikasi_tb_id;
+                $this->id_paduan_tb = $data->paduan_tb_id;
+                $this->id_kabupaten_pengobatan = $data->kabupaten_pengobatan_id;
                 $this->nama_sarana_kesehatan = $data->nama_sarana_kesehatan;
                 $this->no_reg_tb = $data->no_reg_tb;
                 $this->tanggal_mulai_terapi = $data->tanggal_mulai_terapi;
@@ -61,13 +61,13 @@ class Form extends Component
     {
         $this->validate();
         PengobatanTbHiv::updateOrCreate(
-            ['id_pengobatan_tb_hiv' => $this->id_pengobatan_tb_hiv],
+            ['id' => $this->id_pengobatan_tb_hiv],
             [
-                'id_pasien' => $this->id_pasien,
-                'id_tipe_tb' => $this->id_tipe_tb,
-                'id_klasifikasi_tb' => $this->id_klasifikasi_tb,
-                'id_paduan_tb' => $this->id_paduan_tb,
-                'id_kabupaten_pengobatan' => $this->id_kabupaten_pengobatan,
+                'pasien_id' => $this->id_pasien,
+                'tipe_tb_id' => $this->id_tipe_tb,
+                'klasifikasi_tb_id' => $this->id_klasifikasi_tb,
+                'paduan_tb_id' => $this->id_paduan_tb,
+                'kabupaten_pengobatan_id' => $this->id_kabupaten_pengobatan,
                 'nama_sarana_kesehatan' => $this->nama_sarana_kesehatan,
                 'no_reg_tb' => $this->no_reg_tb,
                 'tanggal_mulai_terapi' => $this->tanggal_mulai_terapi,

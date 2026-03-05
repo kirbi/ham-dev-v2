@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = KlasifikasiTb::find($id);
             if ($data) {
-                $this->id_klasifikasi_tb = $data->id_klasifikasi_tb;
+                $this->id_klasifikasi_tb = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         KlasifikasiTb::updateOrCreate(
-            ['id_klasifikasi_tb' => $this->id_klasifikasi_tb],
+            ['id' => $this->id_klasifikasi_tb],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Klasifikasi TB berhasil disimpan.');

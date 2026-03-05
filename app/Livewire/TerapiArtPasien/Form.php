@@ -32,10 +32,13 @@ class Form extends Component
         if ($id) {
             $data = TerapiArtPasien::find($id);
             if ($data) {
-                $this->fill($data->only([
-                    'id_terapi_art_pasien','id_pasien','tanggal_mulai','fase',
-                    'id_alasan','penjelasan','id_paduan_art',
-                ]));
+                $this->id_terapi_art_pasien = $data->id;
+                $this->id_pasien = $data->pasien_id;
+                $this->tanggal_mulai = $data->tanggal_mulai;
+                $this->fase = $data->fase;
+                $this->id_alasan = $data->alasan_id;
+                $this->penjelasan = $data->penjelasan;
+                $this->id_paduan_art = $data->paduan_art_id;
             }
         }
     }
@@ -44,14 +47,14 @@ class Form extends Component
     {
         $this->validate();
         TerapiArtPasien::updateOrCreate(
-            ['id_terapi_art_pasien' => $this->id_terapi_art_pasien],
+            ['id' => $this->id_terapi_art_pasien],
             [
-                'id_pasien'     => $this->id_pasien,
+                'pasien_id'     => $this->id_pasien,
                 'tanggal_mulai' => $this->tanggal_mulai,
                 'fase'          => $this->fase,
-                'id_alasan'     => $this->id_alasan,
+                'alasan_id'     => $this->id_alasan,
                 'penjelasan'    => $this->penjelasan,
-                'id_paduan_art' => $this->id_paduan_art,
+                'paduan_art_id' => $this->id_paduan_art,
                 'deleted'       => 0,
             ]
         );

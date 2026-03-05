@@ -8,10 +8,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('kecamatan', function (Blueprint $table) {
-            $table->id('id_kecamatan');
+        Schema::create('kecamatans', function (Blueprint $table) {
+            $table->id();
             $table->string('nama', 100);
-            $table->foreignId('id_kabupaten')->constrained('kabupaten', 'id_kabupaten');
+            $table->foreignId('kabupaten_id')->constrained('kabupatens');
             $table->boolean('deleted')->default(false);
             $table->timestamps();
         });
@@ -19,6 +19,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('kecamatan');
+        Schema::dropIfExists('kecamatans');
     }
 };

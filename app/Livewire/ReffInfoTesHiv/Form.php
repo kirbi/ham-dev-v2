@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = InfoTesHiv::find($id);
             if ($data) {
-                $this->id_info_tes_hiv = $data->id_info_tes_hiv;
+                $this->id_info_tes_hiv = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         InfoTesHiv::updateOrCreate(
-            ['id_info_tes_hiv' => $this->id_info_tes_hiv],
+            ['id' => $this->id_info_tes_hiv],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Info Tes HIV berhasil disimpan.');

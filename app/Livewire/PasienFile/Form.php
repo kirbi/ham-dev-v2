@@ -24,9 +24,9 @@ class Form extends Component
         if ($id) {
             $data = PasienFile::find($id);
             if ($data) {
-                $this->id_file = $data->id_file;
+                $this->id_file = $data->id;
                 $this->nama = $data->nama;
-                $this->id_pasien = $data->id_pasien;
+                $this->id_pasien = $data->pasien_id;
                 $this->berkas = $data->berkas;
                 $this->path = $data->path;
             }
@@ -37,10 +37,10 @@ class Form extends Component
     {
         $this->validate();
         PasienFile::updateOrCreate(
-            ['id_file' => $this->id_file],
+            ['id' => $this->id_file],
             [
                 'nama' => $this->nama,
-                'id_pasien' => $this->id_pasien,
+                'pasien_id' => $this->id_pasien,
                 'berkas' => $this->berkas,
                 'path' => $this->path,
                 'deleted' => 0

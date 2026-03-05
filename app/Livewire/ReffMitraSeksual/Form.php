@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = MitraSeksual::find($id);
             if ($data) {
-                $this->id_mitra_seksual = $data->id_mitra_seksual;
+                $this->id_mitra_seksual = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi ?? null;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         MitraSeksual::updateOrCreate(
-            ['id_mitra_seksual' => $this->id_mitra_seksual],
+            ['id' => $this->id_mitra_seksual],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Mitra Seksual berhasil disimpan.');

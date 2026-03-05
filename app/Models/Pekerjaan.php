@@ -8,21 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Pekerjaan extends Model
 {
     use HasFactory;
-    
-    protected $table = 'mref_pekerjaan';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_pekerjaan';
 
-    
     protected $fillable = [
-        'deleted', 'nama', 'deskripsi'
+        'nama', 'deskripsi', 'deleted'
     ];
 
     public function pasiens(){
-        return $this->hasMany(Pasien::class);
+        return $this->hasMany(Pasien::class, 'pekerjaan_id');
     }
 }

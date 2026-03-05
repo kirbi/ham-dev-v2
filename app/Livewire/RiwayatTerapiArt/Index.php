@@ -14,7 +14,7 @@ class Index extends Component
 
     public function delete($id)
     {
-        RiwayatTerapiArt::where('id_riwayat_terapi_art', $id)->update(['deleted' => 1]);
+        RiwayatTerapiArt::where('id', $id)->update(['deleted' => 1]);
         session()->flash('success', 'Riwayat terapi ART berhasil dihapus.');
     }
 

@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = PaduanArt::find($id);
             if ($data) {
-                $this->id_paduan_art = $data->id_paduan_art;
+                $this->id_paduan_art = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         PaduanArt::updateOrCreate(
-            ['id_paduan_art' => $this->id_paduan_art],
+            ['id' => $this->id_paduan_art],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Paduan Terapi berhasil disimpan.');

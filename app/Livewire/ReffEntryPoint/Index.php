@@ -14,7 +14,7 @@ class Index extends Component
 
     public function delete($id)
     {
-        EntryPoint::where('id_entry_point', $id)->update(['deleted' => 1]);
+        EntryPoint::where('id', $id)->update(['deleted' => 1]);
         session()->flash('success', 'Entry Point berhasil dihapus.');
     }
 

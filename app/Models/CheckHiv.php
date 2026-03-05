@@ -8,25 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class CheckHiv extends Model
 {
     use HasFactory;
-    protected $table = 'dpha_check_hiv';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_check_hiv';
-
     
     protected $fillable = [
-        'deleted', 'nama_tempat', 'nama_kegiatan', 'deskripsi_kegiatan', 'tanggal_kegiatan', 'hadir', 'id_kabupaten', 'id_kecamatan', 'jumlah_positif', 'jumlah_negatif', 'nama_narahubung', 'kontak_narahubung'
+        'deleted', 'nama_tempat', 'nama_kegiatan', 'deskripsi_kegiatan', 'tanggal_kegiatan', 'hadir', 'kabupaten_id', 'kecamatan_id', 'jumlah_positif', 'jumlah_negatif', 'nama_narahubung', 'kontak_narahubung'
     ];
 
     public function kabupaten(){
-        return $this->belongsTo(Kabupaten::class, 'id_kabupaten', 'id_kabupaten');
+        return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
     }
     
     public function kecamatan(){
-        return $this->belongsTo(Kecamatan::class, 'id_kecamatan', 'id_kecamatan');
+        return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
     }
 
     public static function filterCheckHivBulanan($tahun = null, $bulan = null, $kabupaten = null, $kecamatan = null){

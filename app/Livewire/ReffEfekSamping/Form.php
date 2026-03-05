@@ -23,7 +23,7 @@ class Form extends Component
         if ($id) {
             $data = EfekSamping::find($id);
             if ($data) {
-                $this->id_efek_samping = $data->id_efek_samping;
+                $this->id_efek_samping = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi;
                 $this->kode = $data->kode;
@@ -35,7 +35,7 @@ class Form extends Component
     {
         $this->validate();
         EfekSamping::updateOrCreate(
-            ['id_efek_samping' => $this->id_efek_samping],
+            ['id' => $this->id_efek_samping],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'kode' => $this->kode, 'deleted' => 0]
         );
         session()->flash('success', 'Efek Samping berhasil disimpan.');
