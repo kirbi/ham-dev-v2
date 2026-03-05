@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\old;
 
 use App\Models\KelompokResikoKonseling;
 use Illuminate\Http\Request;

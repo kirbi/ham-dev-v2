@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 class PasienFileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['role:admin']);
-    }
 
     public function index()
     {

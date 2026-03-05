@@ -9,10 +9,6 @@ use App\Http\Middleware\RoleMiddleware;
 
 class ReffAdherenceArtController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['role:admin,konselor']);
-    }
 
     public function index()
     {

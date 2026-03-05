@@ -38,13 +38,6 @@ use Illuminate\Http\Request;
 
 class PasienController extends Controller
 {
-    /**
-     * Constructor - Apply middleware
-     */
-    public function __construct()
-    {
-        $this->middleware(['auth', 'role:admin,konselor']);
-    }
 
     /**
      * Display a listing of the resource.

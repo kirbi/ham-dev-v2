@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Validator;
 
 class ReffStatusFungsionalController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['role:admin,konselor']);
-    }
 
     public function index()
     {

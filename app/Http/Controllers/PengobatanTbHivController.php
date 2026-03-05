@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 class PengobatanTbHivController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['role:admin,konselor']);
-    }
 
     public function index()
     {

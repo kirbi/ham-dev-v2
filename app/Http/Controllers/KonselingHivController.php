@@ -19,10 +19,6 @@ use Illuminate\Http\Request;
 
 class KonselingHivController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'role:admin,konselor']);
-    }
 
     public function index()
     {
