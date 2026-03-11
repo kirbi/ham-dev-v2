@@ -30,3 +30,8 @@ Satu catatan
 Di sistem lama, HomeController memiliki adminHome() dan konselorHome() yang me-render view berbeda (admin.adminHome vs konselor.konselorHome). Di sistem baru ini sengaja disatukan — keduanya lihat dashboard yang sama — sesuai dengan kriteria "function tidak redundan" yang diminta.
 
 Jika ke depan ingin ada konten berbeda per role di dashboard yang sama, bisa dilakukan di dalam Livewire Dashboard\Index dengan kondisi auth()->user()->hasRole('admin') tanpa perlu memisahkan route/controller.
+
+
+Field	Value
+Email	admin@ham.local
+Password	admin123
