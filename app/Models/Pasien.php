@@ -23,7 +23,7 @@ class Pasien extends Model
         'tempat_lahir',
         'alamat',
         'no_hp',
-        'id_pendidikan_terakhir',
+        'pendidikan_id',
         'pekerjaan_id',
         'status_pernikahan_id',
         'foto_pasien',
@@ -37,7 +37,6 @@ class Pasien extends Model
         'hubungan_pmo',
         'no_hp_pmo',
         'paduan_art_id',
-        'id',
         'riwayat_alergi_obat',
         'status_hiv',
         'jenis_pasien',
@@ -48,7 +47,6 @@ class Pasien extends Model
         'kabupaten_id',
         'kecamatan_id',
         'desa_id',
-        'no_kk',
         'ibu_kandung',
         'tanggal_rujuk_masuk',
         'tanggal_rujuk_keluar',
@@ -79,7 +77,7 @@ class Pasien extends Model
         return $this->hasMany(PemeriksaanKlinis::class, 'pasien_id')->where('deleted', 0);
     }
     public function pendidikan(){
-        return $this->belongsTo(Pendidikan::class, 'id_pendidikan_terakhir', 'pendidikan_id')->where('deleted', 0);
+        return $this->belongsTo(Pendidikan::class, 'pendidikan_id')->where('deleted', 0);
     }
     
     public function statusPernikahan(){
@@ -87,7 +85,7 @@ class Pasien extends Model
     }
     
     public function riwayatTerapiArt(){
-        return $this->belongsTo(RiwayatTerapiArt::class, 'pasien_id')->where('deleted', 0);
+        return $this->hasMany(RiwayatTerapiArt::class, 'pasien_id')->where('deleted', 0);
     }
 
     public function riwayaPerawatanPasien(){
@@ -98,20 +96,17 @@ class Pasien extends Model
         return $this->hasMany(RiwayatMitraSeksual::class, 'pasien_id')->where('deleted', 0);
     }
     public function statusHiv(){
-        return $this->hasOne(StatusHIV::class, 'status_hiv_id')->where('deleted', 0);
+        return $this->belongsTo(StatusHiv::class, 'status_hiv_id')->where('deleted', 0);
     }
     
     public function faktorResikoPasien(){
         return $this->hasMany(FaktorResikoPasien::class, 'pasien_id')->where('deleted', 0);
     }
     public function entryPoint(){
-        return $this->hasOne(EntryPoint::class, 'entry_point_id')->where('deleted', 0);
-    }
-    public function iiart(){
-        return $this->hasOne(IndikasiInisiasiArt::class, 'id', 'id')->where('deleted', 0);
+        return $this->belongsTo(EntryPoint::class, 'entry_point_id')->where('deleted', 0);
     }
     public function paduanArt(){
-        return $this->hasOne(PaduanArt::class, 'paduan_art_id')->where('deleted', 0);
+        return $this->belongsTo(PaduanArt::class, 'paduan_art_id')->where('deleted', 0);
     }
     public function terapiArt(){
         return $this->hasMany(TerapiArtPasien::class, 'pasien_id')->where('deleted', 0);

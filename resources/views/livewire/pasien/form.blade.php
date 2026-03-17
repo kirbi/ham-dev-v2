@@ -177,18 +177,18 @@
 
                     <!-- Pendidikan -->
                     <div>
-                        <label for="pendidikan_id_terakhir" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label for="pendidikan_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Pendidikan Terakhir <span class="text-red-500">*</span>
                         </label>
-                        <select wire:model="pendidikan_id_terakhir" 
-                                id="pendidikan_id_terakhir"
-                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white @error('pendidikan_id_terakhir') border-red-500 @enderror">
+                        <select wire:model="pendidikan_id" 
+                                id="pendidikan_id"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white @error('pendidikan_id') border-red-500 @enderror">
                             <option value="">Pilih Pendidikan</option>
                             @foreach($pendidikans as $pendidikan)
                                 <option value="{{ $pendidikan->id }}">{{ $pendidikan->nama }}</option>
                             @endforeach
                         </select>
-                        @error('pendidikan_id_terakhir') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
+                        @error('pendidikan_id') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
                     </div>
 
                     <!-- Pekerjaan -->

@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('tempat_lahir', 100)->nullable();
             $table->text('alamat')->nullable();
             $table->string('no_hp', 20)->nullable();
-            $table->unsignedBigInteger('id_pendidikan_terakhir')->nullable();
+            $table->foreignId('pendidikan_id')->nullable()->constrained('pendidikans');
             $table->foreignId('pekerjaan_id')->nullable()->constrained('pekerjaans');
             $table->foreignId('status_pernikahan_id')->nullable()->constrained('status_pernikahans');
             $table->string('foto_pasien', 255)->nullable();

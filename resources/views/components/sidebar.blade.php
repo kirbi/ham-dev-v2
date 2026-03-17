@@ -13,7 +13,7 @@
             </li>
             
             <!-- Pasien -->
-            @can('view-pasien')
+            @auth
             <li>
                 <a href="{{ route('pasien.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group {{ request()->is('pasien*') ? 'bg-gray-100' : '' }}">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20">
@@ -22,10 +22,10 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">Pasien</span>
                 </a>
             </li>
-            @endcan
+            @endauth
             
             <!-- Follow Up -->
-            @can('view-followup')
+            @auth
             <li>
                 <a href="{{ route('followup.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group {{ request()->is('followup*') ? 'bg-gray-100' : '' }}">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20">
@@ -34,10 +34,10 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">Follow Up</span>
                 </a>
             </li>
-            @endcan
+            @endauth
             
             <!-- Konseling -->
-            @can('view-konseling')
+            @auth
             <li>
                 <a href="{{ route('konseling.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group {{ request()->is('konseling*') ? 'bg-gray-100' : '' }}">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" fill="currentColor" viewBox="0 0 20 20">
@@ -47,7 +47,7 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">Konseling</span>
                 </a>
             </li>
-            @endcan
+            @endauth
             
             <!-- Data Klinis -->
             <li>
@@ -79,7 +79,7 @@
             </li>
 
             <!-- Admin Menu -->
-            @role('admin')
+            @if(auth()->check() && auth()->user()->type === 'admin')
             <li>
                 <button type="button" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100" 
                         aria-controls="dropdown-admin" data-collapse-toggle="dropdown-admin">
@@ -93,13 +93,10 @@
                 </button>
                 <ul id="dropdown-admin" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="{{ route('admin.users.index') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Users</a>
+                        <a href="{{ route('konselor.index') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 {{ request()->is('konselor*') ? 'font-semibold' : '' }}">Konselor</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.roles.index') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Roles & Permissions</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('konselor.index') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Konselor</a>
+                        <a href="{{ route('pasien-file.index') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 {{ request()->is('pasien-file*') ? 'font-semibold' : '' }}">File Pasien</a>
                     </li>
                 </ul>
             </li>
@@ -157,7 +154,7 @@
                     <li><a href="{{ route('reff-tipe-tb.index') }}" class="flex items-center w-full p-2 text-gray-700 rounded-lg pl-11 hover:bg-gray-100">Tipe TB</a></li>
                 </ul>
             </li>
-            @endrole
+            @endif
         </ul>
     </div>
 </aside>

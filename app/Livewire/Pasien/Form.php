@@ -55,7 +55,7 @@ class Form extends Component
     public $no_hp = '';
     
     #[Validate('required|integer')]
-    public $pendidikan_id_terakhir = '';
+    public $pendidikan_id = '';
     
     #[Validate('required|integer')]
     public $pekerjaan_id = '';
@@ -129,7 +129,7 @@ class Form extends Component
         $this->jenis_kelamin = $pasien->jenis_kelamin;
         $this->alamat = $pasien->alamat;
         $this->no_hp = $pasien->no_hp;
-        $this->pendidikan_id_terakhir = $pasien->pendidikan_id_terakhir;
+        $this->pendidikan_id = $pasien->pendidikan_id;
         $this->pekerjaan_id = $pasien->pekerjaan_id;
         $this->status_pernikahan_id = $pasien->status_pernikahan_id;
         $this->konselor_id = $pasien->konselor_id;
@@ -208,7 +208,7 @@ class Form extends Component
                 'jenis_kelamin' => $this->jenis_kelamin,
                 'alamat' => $this->alamat,
                 'no_hp' => $this->no_hp,
-                'pendidikan_id_terakhir' => $this->pendidikan_id_terakhir,
+                'pendidikan_id' => $this->pendidikan_id,
                 'pekerjaan_id' => $this->pekerjaan_id,
                 'status_pernikahan_id' => $this->status_pernikahan_id,
                 'konselor_id' => $this->konselor_id,

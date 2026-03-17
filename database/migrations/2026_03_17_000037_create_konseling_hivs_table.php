@@ -28,6 +28,7 @@ return new class extends Migration {
             $table->boolean('pernah_tes_hiv_sebelumnya')->nullable();
             $table->boolean('kesediaan_tes_hiv')->nullable();
             $table->text('catatan_konseling')->nullable();
+            $table->foreignId('alasan_tes_hiv_id')->nullable()->constrained('alasan_tes_hivs');
             $table->boolean('deleted')->default(false);
             $table->timestamps();
         });

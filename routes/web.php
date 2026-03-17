@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PasienController;
 use App\Livewire\Pasien\Index as PasienIndex;
@@ -8,6 +9,15 @@ use App\Livewire\Pasien\Form as PasienForm;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Auth routes
+Route::get('/login', App\Livewire\Auth\Login::class)->name('login')->middleware('guest');
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect()->route('login');
+})->name('logout')->middleware('auth');
 
 // Routes with RBAC middleware
 // Admin and Konselor can access these routes

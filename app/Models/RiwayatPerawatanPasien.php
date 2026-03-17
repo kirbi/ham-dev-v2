@@ -42,7 +42,7 @@ class RiwayatPerawatanPasien extends Model
     }
 
     public function paduanArt(){
-        return $this->hasOne(PaduanArt::class, 'paduan_art_id');
+        return $this->belongsTo(PaduanArt::class, 'paduan_art_id');
     }
 
     public function adherenceArt(){
