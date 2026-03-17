@@ -9,15 +9,13 @@ class KonselingHiv extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_konseling_hiv';
-    protected $primaryKey = 'id_konseling_hiv';
     protected $fillable = [
-        'id_pasien',
-        'id_kabupaten',
-        'id_konselor',
-        'id_pendidikan',
-        'id_pekerjaan',
-        'id_status_pernikahan',
+        'pasien_id',
+        'kabupaten_id',
+        'konselor_id',
+        'pendidikan_id',
+        'pekerjaan_id',
+        'status_pernikahan_id',
         'alamat',
         'tanggal_konseling',
         'no_registrasi',
@@ -37,50 +35,50 @@ class KonselingHiv extends Model
     ];
     
     public function pasien(){
-        return $this->belongsTo(Pasien::class, 'id_pasien', 'id_pasien');
+        return $this->belongsTo(Pasien::class, 'pasien_id');
     }
     
     public function kelompokResikoKonseling(){
-        return $this->hasMany(KelompokResikoKonseling::class, 'id_konseling', 'id_konseling_hiv');
+        return $this->hasMany(KelompokResikoKonseling::class, 'konseling_hiv_id');
     }
 
     public function infoTesHivKonseling(){
-        return $this->hasMany(InfoTesHivKonseling::class, 'id_konseling', 'id_konseling_hiv');
+        return $this->hasMany(InfoTesHivKonseling::class, 'konseling_hiv_id');
     }
 
     public function kajianResikoHiv(){
-        return $this->hasMany(KajianResikoHiv::class, 'id_konseling', 'id_konseling_hiv');
+        return $this->hasMany(KajianResikoHiv::class, 'konseling_hiv_id');
     }
 
     public function tesHivKonseling(){
-        return $this->hasOne(TesHivKonseling::class, 'id_konseling', 'id_konseling_hiv');
+        return $this->hasOne(TesHivKonseling::class, 'konseling_hiv_id');
     }
 
     public function rekapTesHivKonseling(){
-        return $this->hasOne(RekapTesHivKonseling::class, 'id_konseling', 'id_konseling_hiv');
+        return $this->hasOne(RekapTesHivKonseling::class, 'konseling_hiv_id');
     }
 
     public function kabupaten(){
-        return $this->belongsTo(Kabupaten::class, 'id_kabupaten', 'id_kabupaten');
+        return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
     }
 
     public function statusPernikahan(){
-        return $this->belongsTo(StatusPernikahan::class, 'id_status_pernikahan', 'id_status_pernikahan');
+        return $this->belongsTo(StatusPernikahan::class, 'status_pernikahan_id');
     }
 
     public function konselor(){
-        return $this->belongsTo(Konselor::class, 'id_konselor', 'id_konselor');
+        return $this->belongsTo(Konselor::class, 'konselor_id');
     }
 
     public function alasanTes(){
-        return $this->belongsTo(AlasanTesHiv::class, 'id_alasan_tes_hiv', 'id_alasan_tes_hiv');
+        return $this->belongsTo(AlasanTesHiv::class, 'alasan_tes_hiv_id');
     }
 
     public function pekerjaan(){
-        return $this->belongsTo(Pekerjaan::class, 'id_pekerjaan', 'id_pekerjaan');
+        return $this->belongsTo(Pekerjaan::class, 'pekerjaan_id');
     }
     public function pendidikan(){
-        return $this->belongsTo(Pendidikan::class, 'id_pendidikan', 'id_pendidikan');
+        return $this->belongsTo(Pendidikan::class, 'pendidikan_id');
     }
     public static function filterKonselingHiv($jenisKelamin =null, $tahun = null, $bulan = null, $pendidikan = null, $statusPernikahan = null, $pekerjaan = null){
         $konseling = KonselingHiv::where('deleted', 0);
@@ -94,13 +92,13 @@ class KonselingHiv extends Model
             $konseling->whereMonth('tanggal_konseling', $bulan);
         }
         if($pendidikan){
-            $konseling->where('id_pendidikan', $pendidikan);
+            $konseling->where('pendidikan_id', $pendidikan);
         }
         if($statusPernikahan){
-            $konseling->where('id_status_pernikahan', $statusPernikahan);
+            $konseling->where('status_pernikahan_id', $statusPernikahan);
         }
         if($pekerjaan){
-            $konseling->where('id_pekerjaan', $pekerjaan);
+            $konseling->where('pekerjaan_id', $pekerjaan);
         }
         return $konseling;
     }

@@ -18,14 +18,14 @@ use Livewire\Attributes\Validate;
 class Form extends Component
 {
     public $konselingId = null;
-    public $id_pasien = '';
+    public $pasien_id = '';
     public $tanggal_konseling = '';
-    public $id_kabupaten = '';
-    public $id_konselor = '';
-    public $id_pendidikan = '';
-    public $id_pekerjaan = '';
-    public $id_status_pernikahan = '';
-    public $id_alasan_tes_hiv = '';
+    public $kabupaten_id = '';
+    public $konselor_id = '';
+    public $pendidikan_id = '';
+    public $pekerjaan_id = '';
+    public $status_pernikahan_id = '';
+    public $alasan_tes_hiv_id = '';
     public $alamat = '';
     public $no_registrasi = '';
     public $status_pasien = '';
@@ -38,7 +38,7 @@ class Form extends Component
     public $statusPernikahans = [];
     public $pasien = null;
 
-    public function mount($id_pasien = null, $konselingId = null)
+    public function mount($pasien_id = null, $konselingId = null)
     {
         $this->kabupatens = Kabupaten::orderBy('nama', 'ASC')->where('deleted', 0)->get();
         $this->pekerjaans = Pekerjaan::orderBy('nama', 'ASC')->where('deleted', 0)->get();
@@ -46,22 +46,22 @@ class Form extends Component
         $this->konselors = Konselor::orderBy('nama', 'ASC')->where('deleted', 0)->get();
         $this->alasanTesHivs = AlasanTesHiv::orderBy('nama', 'ASC')->where('deleted', 0)->get();
         $this->statusPernikahans = StatusPernikahan::orderBy('nama', 'ASC')->where('deleted', 0)->get();
-        if ($id_pasien) {
-            $this->pasien = Pasien::find($id_pasien);
-            $this->id_pasien = $id_pasien;
+        if ($pasien_id) {
+            $this->pasien = Pasien::find($pasien_id);
+            $this->pasien_id = $pasien_id;
         }
         if ($konselingId) {
             $konseling = KonselingHiv::find($konselingId);
             if ($konseling) {
                 $this->konselingId = $konselingId;
-                $this->id_pasien = $konseling->id_pasien;
+                $this->pasien_id = $konseling->pasien_id;
                 $this->tanggal_konseling = $konseling->tanggal_konseling;
-                $this->id_kabupaten = $konseling->id_kabupaten;
-                $this->id_konselor = $konseling->id_konselor;
-                $this->id_pendidikan = $konseling->id_pendidikan;
-                $this->id_pekerjaan = $konseling->id_pekerjaan;
-                $this->id_status_pernikahan = $konseling->id_status_pernikahan;
-                $this->id_alasan_tes_hiv = $konseling->id_alasan_tes_hiv;
+                $this->kabupaten_id = $konseling->kabupaten_id;
+                $this->konselor_id = $konseling->konselor_id;
+                $this->pendidikan_id = $konseling->pendidikan_id;
+                $this->pekerjaan_id = $konseling->pekerjaan_id;
+                $this->status_pernikahan_id = $konseling->status_pernikahan_id;
+                $this->alasan_tes_hiv_id = $konseling->alasan_tes_hiv_id;
                 $this->alamat = $konseling->alamat;
                 $this->no_registrasi = $konseling->no_registrasi;
                 $this->status_pasien = $konseling->status_pasien;
@@ -71,8 +71,40 @@ class Form extends Component
 
     public function save()
     {
-        // Validasi dan simpan data konseling
-        // ...implementasi validasi dan simpan seperti di controller lama...
+        $this->validate([
+            'pasien_id'           => 'required|integer',
+            'tanggal_konseling'   => 'required|date',
+            'kabupaten_id'        => 'required|integer',
+            'konselor_id'         => 'required|integer',
+            'pendidikan_id'       => 'nullable|integer',
+            'pekerjaan_id'        => 'nullable|integer',
+            'status_pernikahan_id' => 'nullable|integer',
+            'alasan_tes_hiv_id'   => 'nullable|integer',
+            'alamat'              => 'nullable|max:500',
+            'no_registrasi'       => 'nullable|max:100',
+            'status_pasien'       => 'nullable|max:50',
+        ]);
+
+        KonselingHiv::updateOrCreate(
+            ['id' => $this->konselingId],
+            [
+                'pasien_id'            => $this->pasien_id,
+                'tanggal_konseling'    => $this->tanggal_konseling,
+                'kabupaten_id'         => $this->kabupaten_id,
+                'konselor_id'          => $this->konselor_id,
+                'pendidikan_id'        => $this->pendidikan_id ?: null,
+                'pekerjaan_id'         => $this->pekerjaan_id ?: null,
+                'status_pernikahan_id' => $this->status_pernikahan_id ?: null,
+                'alasan_tes_hiv_id'    => $this->alasan_tes_hiv_id ?: null,
+                'alamat'               => $this->alamat,
+                'no_registrasi'        => $this->no_registrasi,
+                'status_pasien'        => $this->status_pasien,
+                'deleted'              => 0,
+            ]
+        );
+
+        session()->flash('success', 'Data konseling berhasil disimpan.');
+        $this->redirect(route('konseling.index'), navigate: true);
     }
 
     public function render()

@@ -5,13 +5,13 @@
         <select wire:model="kabupaten" class="border rounded px-2 py-1">
             <option value="">Semua Kabupaten</option>
             @foreach($kabupatens as $kab)
-                <option value="{{ $kab->id_kabupaten }}">{{ $kab->nama }}</option>
+                <option value="{{ $kab->kabupaten_id }}">{{ $kab->nama }}</option>
             @endforeach
         </select>
         <select wire:model="kecamatan" class="border rounded px-2 py-1">
             <option value="">Semua Kecamatan</option>
             @foreach($kecamatans as $kec)
-                <option value="{{ $kec->id_kecamatan }}">{{ $kec->nama }}</option>
+                <option value="{{ $kec->kecamatan_id }}">{{ $kec->nama }}</option>
             @endforeach
         </select>
     </div>

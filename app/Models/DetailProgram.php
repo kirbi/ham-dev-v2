@@ -9,5 +9,4 @@ class DetailProgram extends Model
 {
     use HasFactory;
     
-    protected $table = 'dham_detail_program';
 }

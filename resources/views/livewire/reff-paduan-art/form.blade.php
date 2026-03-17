@@ -1,5 +1,5 @@
 <div>
-    <h2 class="text-xl font-bold mb-4">{{ $id_paduan_art ? 'Edit' : 'Tambah' }} Paduan Terapi ART</h2>
+    <h2 class="text-xl font-bold mb-4">{{ $paduan_art_id ? 'Edit' : 'Tambah' }} Paduan Terapi ART</h2>
     <form wire:submit.prevent="save">
         <div class="mb-4">
             <label class="block mb-1">Nama</label>

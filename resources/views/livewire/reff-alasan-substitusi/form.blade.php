@@ -1,5 +1,5 @@
 <div>
-    <h2 class="text-xl font-bold mb-4">{{ $id_alasan_substitusi ? 'Edit' : 'Tambah' }} Alasan Substitusi</h2>
+    <h2 class="text-xl font-bold mb-4">{{ $alasan_substitusi_id ? 'Edit' : 'Tambah' }} Alasan Substitusi</h2>
     <form wire:submit.prevent="save">
         <div class="mb-4">
             <label class="block mb-1">Nama</label>

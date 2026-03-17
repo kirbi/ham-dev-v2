@@ -55,26 +55,26 @@ class Form extends Component
     public $no_hp = '';
     
     #[Validate('required|integer')]
-    public $id_pendidikan_terakhir = '';
+    public $pendidikan_id_terakhir = '';
     
     #[Validate('required|integer')]
-    public $id_pekerjaan = '';
+    public $pekerjaan_id = '';
     
     #[Validate('required|integer')]
-    public $id_status_pernikahan = '';
+    public $status_pernikahan_id = '';
     
     #[Validate('required|integer')]
-    public $id_konselor = '';
+    public $konselor_id = '';
     
     #[Validate('required')]
     public $agama = '';
     
     public $jenis_pasien = '';
     public $status_aktif = 'aktif';
-    public $id_provinsi = '';
-    public $id_kabupaten = '';
-    public $id_kecamatan = '';
-    public $id_desa = '';
+    public $provinsi_id = '';
+    public $kabupaten_id = '';
+    public $kecamatan_id = '';
+    public $desa_id = '';
     public $tempat_tinggal = '';
     public $ibu_kandung = '';
     public $tanggal_rujuk_masuk = '';
@@ -129,17 +129,17 @@ class Form extends Component
         $this->jenis_kelamin = $pasien->jenis_kelamin;
         $this->alamat = $pasien->alamat;
         $this->no_hp = $pasien->no_hp;
-        $this->id_pendidikan_terakhir = $pasien->id_pendidikan_terakhir;
-        $this->id_pekerjaan = $pasien->id_pekerjaan;
-        $this->id_status_pernikahan = $pasien->id_status_pernikahan;
-        $this->id_konselor = $pasien->id_konselor;
+        $this->pendidikan_id_terakhir = $pasien->pendidikan_id_terakhir;
+        $this->pekerjaan_id = $pasien->pekerjaan_id;
+        $this->status_pernikahan_id = $pasien->status_pernikahan_id;
+        $this->konselor_id = $pasien->konselor_id;
         $this->agama = $pasien->agama;
         $this->jenis_pasien = $pasien->jenis_pasien;
         $this->status_aktif = $pasien->status_aktif;
-        $this->id_provinsi = $pasien->id_provinsi;
-        $this->id_kabupaten = $pasien->id_kabupaten;
-        $this->id_kecamatan = $pasien->id_kecamatan;
-        $this->id_desa = $pasien->id_desa;
+        $this->provinsi_id = $pasien->provinsi_id;
+        $this->kabupaten_id = $pasien->kabupaten_id;
+        $this->kecamatan_id = $pasien->kecamatan_id;
+        $this->desa_id = $pasien->desa_id;
         $this->tempat_tinggal = $pasien->tempat_tinggal;
         $this->ibu_kandung = $pasien->ibu_kandung;
         $this->tanggal_rujuk_masuk = $pasien->tanggal_rujuk_masuk;
@@ -149,13 +149,13 @@ class Form extends Component
         $this->tempat_rujuk_keluar = $pasien->tempat_rujuk_keluar;
 
         // Load dependent dropdowns
-        if ($this->id_provinsi) {
+        if ($this->provinsi_id) {
             $this->updatedIdProvinsi();
         }
-        if ($this->id_kabupaten) {
+        if ($this->kabupaten_id) {
             $this->updatedIdKabupaten();
         }
-        if ($this->id_kecamatan) {
+        if ($this->kecamatan_id) {
             $this->updatedIdKecamatan();
         }
     }
@@ -163,32 +163,32 @@ class Form extends Component
     // Cascading dropdown handlers
     public function updatedIdProvinsi()
     {
-        $this->kabupatens = Kabupaten::where('id_provinsi', $this->id_provinsi)
+        $this->kabupatens = Kabupaten::where('provinsi_id', $this->provinsi_id)
             ->where('deleted', 0)
             ->orderBy('nama', 'ASC')
             ->get();
-        $this->id_kabupaten = '';
+        $this->kabupaten_id = '';
         $this->kecamatans = [];
         $this->desas = [];
     }
 
     public function updatedIdKabupaten()
     {
-        $this->kecamatans = Kecamatan::where('id_kabupaten', $this->id_kabupaten)
+        $this->kecamatans = Kecamatan::where('kabupaten_id', $this->kabupaten_id)
             ->where('deleted', 0)
             ->orderBy('nama', 'ASC')
             ->get();
-        $this->id_kecamatan = '';
+        $this->kecamatan_id = '';
         $this->desas = [];
     }
 
     public function updatedIdKecamatan()
     {
-        $this->desas = Desa::where('id_kecamatan', $this->id_kecamatan)
+        $this->desas = Desa::where('kecamatan_id', $this->kecamatan_id)
             ->where('deleted', 0)
             ->orderBy('nama', 'ASC')
             ->get();
-        $this->id_desa = '';
+        $this->desa_id = '';
     }
 
     public function save()
@@ -208,17 +208,17 @@ class Form extends Component
                 'jenis_kelamin' => $this->jenis_kelamin,
                 'alamat' => $this->alamat,
                 'no_hp' => $this->no_hp,
-                'id_pendidikan_terakhir' => $this->id_pendidikan_terakhir,
-                'id_pekerjaan' => $this->id_pekerjaan,
-                'id_status_pernikahan' => $this->id_status_pernikahan,
-                'id_konselor' => $this->id_konselor,
+                'pendidikan_id_terakhir' => $this->pendidikan_id_terakhir,
+                'pekerjaan_id' => $this->pekerjaan_id,
+                'status_pernikahan_id' => $this->status_pernikahan_id,
+                'konselor_id' => $this->konselor_id,
                 'agama' => $this->agama,
                 'jenis_pasien' => $this->jenis_pasien,
                 'status_aktif' => $this->status_aktif,
-                'id_provinsi' => $this->id_provinsi,
-                'id_kabupaten' => $this->id_kabupaten,
-                'id_kecamatan' => $this->id_kecamatan,
-                'id_desa' => $this->id_desa,
+                'provinsi_id' => $this->provinsi_id,
+                'kabupaten_id' => $this->kabupaten_id,
+                'kecamatan_id' => $this->kecamatan_id,
+                'desa_id' => $this->desa_id,
                 'tempat_tinggal' => $this->tempat_tinggal,
                 'ibu_kandung' => $this->ibu_kandung,
                 'tanggal_rujuk_masuk' => $this->tanggal_rujuk_masuk,

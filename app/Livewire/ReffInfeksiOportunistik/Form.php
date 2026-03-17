@@ -7,7 +7,7 @@ use App\Models\InfeksiOportunistik;
 
 class Form extends Component
 {
-    public $id_infeksi_oportunistik;
+    public $id;
     public $nama;
     public $deskripsi;
     public $kode;
@@ -23,7 +23,7 @@ class Form extends Component
         if ($id) {
             $data = InfeksiOportunistik::find($id);
             if ($data) {
-                $this->id_infeksi_oportunistik = $data->id_infeksi_oportunistik;
+                $this->id = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi;
                 $this->kode = $data->kode;
@@ -35,7 +35,7 @@ class Form extends Component
     {
         $this->validate();
         InfeksiOportunistik::updateOrCreate(
-            ['id_infeksi_oportunistik' => $this->id_infeksi_oportunistik],
+            ['id' => $this->id],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'kode' => $this->kode, 'deleted' => 0]
         );
         session()->flash('success', 'Infeksi Oportunistik berhasil disimpan.');

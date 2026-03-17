@@ -9,13 +9,6 @@ class PaduanArt extends Model
 {
     use HasFactory;
     
-    protected $table = 'mref_paduan_art';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_paduan_art';
 
     
     protected $fillable = [

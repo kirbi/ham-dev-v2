@@ -6,8 +6,8 @@
     <form wire:submit="save">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-                <label for="id_pasien">Pasien</label>
-                <input type="text" id="id_pasien" wire:model="id_pasien" class="w-full px-4 py-2 border rounded-lg" readonly>
+                <label for="pasien_id">Pasien</label>
+                <input type="text" id="pasien_id" wire:model="pasien_id" class="w-full px-4 py-2 border rounded-lg" readonly>
             </div>
             <div>
                 <label for="tanggal_pengobatan">Tanggal Pengobatan</label>
@@ -26,20 +26,20 @@
                 <input type="number" id="berat_badan" wire:model="berat_badan" class="w-full px-4 py-2 border rounded-lg">
             </div>
             <div>
-                <label for="id_status_tb">Status TB</label>
-                <select id="id_status_tb" wire:model="id_status_tb" class="w-full px-4 py-2 border rounded-lg">
+                <label for="status_tb_id">Status TB</label>
+                <select id="status_tb_id" wire:model="status_tb_id" class="w-full px-4 py-2 border rounded-lg">
                     <option value="">Pilih Status TB</option>
                     @foreach($statusTbs as $tb)
-                        <option value="{{ $tb->id_status_tb }}">{{ $tb->nama }}</option>
+                        <option value="{{ $tb->id }}">{{ $tb->nama }}</option>
                     @endforeach
                 </select>
             </div>
             <div>
-                <label for="id_paduan_art">Paduan ART</label>
-                <select id="id_paduan_art" wire:model="id_paduan_art" class="w-full px-4 py-2 border rounded-lg">
+                <label for="paduan_art_id">Paduan ART</label>
+                <select id="paduan_art_id" wire:model="paduan_art_id" class="w-full px-4 py-2 border rounded-lg">
                     <option value="">Pilih Paduan ART</option>
                     @foreach($paduanArts as $art)
-                        <option value="{{ $art->id_paduan_art }}">{{ $art->nama }}</option>
+                        <option value="{{ $art->id }}">{{ $art->nama }}</option>
                     @endforeach
                 </select>
             </div>
@@ -52,11 +52,11 @@
                 </select>
             </div>
             <div>
-                <label for="id_status_fungsional">Status Fungsional</label>
-                <select id="id_status_fungsional" wire:model="id_status_fungsional" class="w-full px-4 py-2 border rounded-lg">
+                <label for="status_fungsional_id">Status Fungsional</label>
+                <select id="status_fungsional_id" wire:model="status_fungsional_id" class="w-full px-4 py-2 border rounded-lg">
                     <option value="">Pilih Status Fungsional</option>
                     @foreach($statusFungsionals as $sf)
-                        <option value="{{ $sf->id_status_fungsional }}">{{ $sf->nama }}</option>
+                        <option value="{{ $sf->id }}">{{ $sf->nama }}</option>
                     @endforeach
                 </select>
             </div>

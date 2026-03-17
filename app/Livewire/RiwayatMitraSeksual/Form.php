@@ -10,24 +10,24 @@ use App\Models\StatusHiv;
 
 class Form extends Component
 {
-    public $id_riwayat_mitra_seksual;
-    public $id_pasien;
+    public $id;
+    public $pasien_id;
     public $nama;
     public $umur;
     public $umur_bulan;
-    public $id_hubungan;
+    public $mitra_seksual_id;
     public $komsumsi_art;
-    public $id_status_hiv;
+    public $status_hiv_id;
     public $no_reg_nasional;
 
     protected $rules = [
-        'id_pasien' => 'required|integer',
+        'pasien_id' => 'required|integer',
         'nama' => 'required|max:100',
         'umur' => 'required',
         'umur_bulan' => 'required',
-        'id_hubungan' => 'required|integer',
+        'mitra_seksual_id' => 'required|integer',
         'komsumsi_art' => 'required',
-        'id_status_hiv' => 'required|integer',
+        'status_hiv_id' => 'required|integer',
         'no_reg_nasional' => 'nullable|string|max:50',
     ];
 
@@ -36,14 +36,14 @@ class Form extends Component
         if ($id) {
             $data = RiwayatMitraSeksual::find($id);
             if ($data) {
-                $this->id_riwayat_mitra_seksual = $data->id_riwayat_mitra_seksual;
-                $this->id_pasien = $data->id_pasien;
+                $this->id = $data->id;
+                $this->pasien_id = $data->pasien_id;
                 $this->nama = $data->nama;
                 $this->umur = $data->umur;
                 $this->umur_bulan = $data->umur_bulan;
-                $this->id_hubungan = $data->id_hubungan;
+                $this->mitra_seksual_id = $data->mitra_seksual_id;
                 $this->komsumsi_art = $data->komsumsi_art;
-                $this->id_status_hiv = $data->id_status_hiv;
+                $this->status_hiv_id = $data->status_hiv_id;
                 $this->no_reg_nasional = $data->no_reg_nasional;
             }
         }
@@ -53,15 +53,15 @@ class Form extends Component
     {
         $this->validate();
         RiwayatMitraSeksual::updateOrCreate(
-            ['id_riwayat_mitra_seksual' => $this->id_riwayat_mitra_seksual],
+            ['id' => $this->id],
             [
-                'id_pasien' => $this->id_pasien,
+                'pasien_id' => $this->pasien_id,
                 'nama' => $this->nama,
                 'umur' => $this->umur,
                 'umur_bulan' => $this->umur_bulan,
-                'id_hubungan' => $this->id_hubungan,
+                'mitra_seksual_id' => $this->mitra_seksual_id,
                 'komsumsi_art' => $this->komsumsi_art,
-                'id_status_hiv' => $this->id_status_hiv,
+                'status_hiv_id' => $this->status_hiv_id,
                 'no_reg_nasional' => $this->no_reg_nasional,
                 'deleted' => 0
             ]

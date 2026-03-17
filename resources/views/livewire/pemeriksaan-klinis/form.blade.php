@@ -3,13 +3,13 @@
     <form wire:submit.prevent="save">
         <div class="mb-4">
             <label class="block mb-1">Pasien</label>
-            <select wire:model="id_pasien" class="border rounded px-2 py-1 w-full" required>
+            <select wire:model="pasien_id" class="border rounded px-2 py-1 w-full" required>
                 <option value="">Pilih Pasien</option>
                 @foreach($pasiens as $pasien)
-                    <option value="{{ $pasien->id_pasien }}">{{ $pasien->nama }}</option>
+                    <option value="{{ $pasien->pasien_id }}">{{ $pasien->nama }}</option>
                 @endforeach
             </select>
-            @error('id_pasien') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('pasien_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="mb-4">
             <label class="block mb-1">Tanggal Pemeriksaan</label>
@@ -18,23 +18,23 @@
         </div>
         <div class="mb-4">
             <label class="block mb-1">Status Fungsional</label>
-            <select wire:model="id_status_fungsional" class="border rounded px-2 py-1 w-full" required>
+            <select wire:model="status_fungsional_id" class="border rounded px-2 py-1 w-full" required>
                 <option value="">Pilih Status Fungsional</option>
                 @foreach($statusFungsionals as $status)
-                    <option value="{{ $status->id_status_fungsional }}">{{ $status->nama }}</option>
+                    <option value="{{ $status->id }}">{{ $status->nama }}</option>
                 @endforeach
             </select>
-            @error('id_status_fungsional') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('status_fungsional_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="mb-4">
             <label class="block mb-1">Kategori Pemeriksaan</label>
-            <select wire:model="id_kategori_pemeriksaan" class="border rounded px-2 py-1 w-full" required>
+            <select wire:model="kategori_pemeriksaan_id" class="border rounded px-2 py-1 w-full" required>
                 <option value="">Pilih Kategori Pemeriksaan</option>
                 @foreach($kategoriPemeriksaans as $kategori)
-                    <option value="{{ $kategori->id_kategori_pemeriksaan }}">{{ $kategori->nama }}</option>
+                    <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
                 @endforeach
             </select>
-            @error('id_kategori_pemeriksaan') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('kategori_pemeriksaan_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="mb-4">
             <label class="block mb-1">Standar Klinis</label>

@@ -1,5 +1,5 @@
 <div>
-    <h2 class="text-xl font-bold mb-4">{{ $id_efek_samping ? 'Edit' : 'Tambah' }} Efek Samping</h2>
+    <h2 class="text-xl font-bold mb-4">{{ $efek_samping_id ? 'Edit' : 'Tambah' }} Efek Samping</h2>
     <form wire:submit.prevent="save">
         <div class="mb-4">
             <label class="block mb-1">Nama</label>

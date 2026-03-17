@@ -12,12 +12,12 @@ use App\Models\Kabupaten;
 
 class Form extends Component
 {
-    public $id_pengobatan_tb_hiv;
-    public $id_pasien;
-    public $id_tipe_tb;
-    public $id_klasifikasi_tb;
-    public $id_paduan_tb;
-    public $id_kabupaten_pengobatan;
+    public $id;
+    public $pasien_id;
+    public $tipe_tb_id;
+    public $klasifikasi_tb_id;
+    public $paduan_tb_id;
+    public $kabupaten_id_pengobatan;
     public $nama_sarana_kesehatan;
     public $no_reg_tb;
     public $tanggal_mulai_terapi;
@@ -25,11 +25,11 @@ class Form extends Component
     public $lokasi_tb;
 
     protected $rules = [
-        'id_pasien' => 'required|integer',
-        'id_tipe_tb' => 'required|integer',
-        'id_klasifikasi_tb' => 'required|integer',
-        'id_paduan_tb' => 'required|integer',
-        'id_kabupaten_pengobatan' => 'required|integer',
+        'pasien_id' => 'required|integer',
+        'tipe_tb_id' => 'required|integer',
+        'klasifikasi_tb_id' => 'required|integer',
+        'paduan_tb_id' => 'required|integer',
+        'kabupaten_id_pengobatan' => 'required|integer',
         'nama_sarana_kesehatan' => 'required|max:250',
         'no_reg_tb' => 'required|max:100',
         'tanggal_mulai_terapi' => 'required|date',
@@ -42,12 +42,12 @@ class Form extends Component
         if ($id) {
             $data = PengobatanTbHiv::find($id);
             if ($data) {
-                $this->id_pengobatan_tb_hiv = $data->id_pengobatan_tb_hiv;
-                $this->id_pasien = $data->id_pasien;
-                $this->id_tipe_tb = $data->id_tipe_tb;
-                $this->id_klasifikasi_tb = $data->id_klasifikasi_tb;
-                $this->id_paduan_tb = $data->id_paduan_tb;
-                $this->id_kabupaten_pengobatan = $data->id_kabupaten_pengobatan;
+                $this->id = $data->id;
+                $this->pasien_id = $data->pasien_id;
+                $this->tipe_tb_id = $data->tipe_tb_id;
+                $this->klasifikasi_tb_id = $data->klasifikasi_tb_id;
+                $this->paduan_tb_id = $data->paduan_tb_id;
+                $this->kabupaten_id_pengobatan = $data->kabupaten_id_pengobatan;
                 $this->nama_sarana_kesehatan = $data->nama_sarana_kesehatan;
                 $this->no_reg_tb = $data->no_reg_tb;
                 $this->tanggal_mulai_terapi = $data->tanggal_mulai_terapi;
@@ -61,13 +61,13 @@ class Form extends Component
     {
         $this->validate();
         PengobatanTbHiv::updateOrCreate(
-            ['id_pengobatan_tb_hiv' => $this->id_pengobatan_tb_hiv],
+            ['id' => $this->id],
             [
-                'id_pasien' => $this->id_pasien,
-                'id_tipe_tb' => $this->id_tipe_tb,
-                'id_klasifikasi_tb' => $this->id_klasifikasi_tb,
-                'id_paduan_tb' => $this->id_paduan_tb,
-                'id_kabupaten_pengobatan' => $this->id_kabupaten_pengobatan,
+                'pasien_id' => $this->pasien_id,
+                'tipe_tb_id' => $this->tipe_tb_id,
+                'klasifikasi_tb_id' => $this->klasifikasi_tb_id,
+                'paduan_tb_id' => $this->paduan_tb_id,
+                'kabupaten_id_pengobatan' => $this->kabupaten_id_pengobatan,
                 'nama_sarana_kesehatan' => $this->nama_sarana_kesehatan,
                 'no_reg_tb' => $this->no_reg_tb,
                 'tanggal_mulai_terapi' => $this->tanggal_mulai_terapi,

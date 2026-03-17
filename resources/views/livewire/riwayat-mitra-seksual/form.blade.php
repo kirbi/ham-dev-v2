@@ -8,13 +8,13 @@
         </div>
         <div class="mb-4">
             <label class="block mb-1">Pasien</label>
-            <select wire:model="id_pasien" class="border rounded px-2 py-1 w-full" required>
+            <select wire:model="pasien_id" class="border rounded px-2 py-1 w-full" required>
                 <option value="">Pilih Pasien</option>
                 @foreach($pasiens as $pasien)
-                    <option value="{{ $pasien->id_pasien }}">{{ $pasien->nama }}</option>
+                    <option value="{{ $pasien->pasien_id }}">{{ $pasien->nama }}</option>
                 @endforeach
             </select>
-            @error('id_pasien') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('pasien_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="mb-4">
             <label class="block mb-1">Umur</label>
@@ -28,13 +28,13 @@
         </div>
         <div class="mb-4">
             <label class="block mb-1">Hubungan</label>
-            <select wire:model="id_hubungan" class="border rounded px-2 py-1 w-full" required>
+            <select wire:model="mitra_seksual_id" class="border rounded px-2 py-1 w-full" required>
                 <option value="">Pilih Hubungan</option>
                 @foreach($hubungans as $hubungan)
-                    <option value="{{ $hubungan->id_hubungan }}">{{ $hubungan->nama }}</option>
+                    <option value="{{ $hubungan->id }}">{{ $hubungan->nama }}</option>
                 @endforeach
             </select>
-            @error('id_hubungan') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('mitra_seksual_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="mb-4">
             <label class="block mb-1">Komsumsi ART</label>
@@ -43,13 +43,13 @@
         </div>
         <div class="mb-4">
             <label class="block mb-1">Status HIV</label>
-            <select wire:model="id_status_hiv" class="border rounded px-2 py-1 w-full" required>
+            <select wire:model="status_hiv_id" class="border rounded px-2 py-1 w-full" required>
                 <option value="">Pilih Status HIV</option>
                 @foreach($statusHivs as $status)
-                    <option value="{{ $status->id_status_hiv }}">{{ $status->nama }}</option>
+                    <option value="{{ $status->id }}">{{ $status->nama }}</option>
                 @endforeach
             </select>
-            @error('id_status_hiv') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('status_hiv_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="mb-4">
             <label class="block mb-1">No REG Nasional</label>

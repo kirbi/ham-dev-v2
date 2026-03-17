@@ -9,13 +9,6 @@ class KategoriPemeriksaan extends Model
 {
     use HasFactory;
     
-    protected $table = 'mref_kategori_pemeriksaan';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_kategori_pemeriksaan';
 
     
     protected $fillable = [

@@ -20,8 +20,8 @@
                 <td class="py-2">{{ $item->kode }}</td>
                 <td class="py-2">{{ $item->deskripsi }}</td>
                 <td class="py-2">
-                    <a href="{{ route('reff-status-fungsional.edit', $item->id_status_fungsional) }}" class="text-blue-500">Ubah</a>
-                    <button wire:click="$emit('delete', {{ $item->id_status_fungsional }})" class="text-red-500 ml-2">Hapus</button>
+                    <a href="{{ route('reff-status-fungsional.edit', $item->status_fungsional_id) }}" class="text-blue-500">Ubah</a>
+                    <button wire:click="$emit('delete', {{ $item->status_fungsional_id }})" class="text-red-500 ml-2">Hapus</button>
                 </td>
             </tr>
             @endforeach

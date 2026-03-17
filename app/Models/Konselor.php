@@ -9,8 +9,6 @@ class Konselor extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_konselor';
-    protected $primaryKey = 'id_konselor';
 
     
     protected $fillable = [
@@ -23,10 +21,10 @@ class Konselor extends Model
         'jenis_kelamin',
         'tempat_lahir',
         'tanggal_lahir',
-        'id_pendidikan',
+        'pendidikan_id',
         'tanggal_sertifikasi',
         'status_pegawai',
-        'id_status_pernikahan'
+        'status_pernikahan_id'
     ];
     
     public function pasiens(){
@@ -34,10 +32,10 @@ class Konselor extends Model
     }
     
     public function pendidikan(){
-        return $this->belongsTo(Pendidikan::class, 'id_pendidikan', 'id_pendidikan');
+        return $this->belongsTo(Pendidikan::class, 'pendidikan_id');
     }
     
     public function statusPernikahan(){
-        return $this->belongsTo(StatusPernikahan::class, 'id_status_pernikahan', 'id_status_pernikahan');
+        return $this->belongsTo(StatusPernikahan::class, 'status_pernikahan_id');
     }
 }

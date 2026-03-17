@@ -1,5 +1,5 @@
 <div>
-    <h2 class="text-xl font-bold mb-4">{{ $id_konselor ? 'Edit' : 'Tambah' }} Konselor</h2>
+    <h2 class="text-xl font-bold mb-4">{{ $id ? 'Edit' : 'Tambah' }} Konselor</h2>
     <form wire:submit.prevent="save">
         <div class="mb-4">
             <label class="block mb-1">Nama</label>
@@ -52,13 +52,13 @@
         </div>
         <div class="mb-4">
             <label class="block mb-1">Pendidikan</label>
-            <select wire:model="id_pendidikan" class="border rounded px-2 py-1 w-full" required>
+            <select wire:model="pendidikan_id" class="border rounded px-2 py-1 w-full" required>
                 <option value="">Pilih Pendidikan</option>
                 @foreach($pendidikan as $p)
-                    <option value="{{ $p->id_pendidikan }}">{{ $p->nama }}</option>
+                    <option value="{{ $p->pendidikan_id }}">{{ $p->nama }}</option>
                 @endforeach
             </select>
-            @error('id_pendidikan') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('pendidikan_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="mb-4">
             <label class="block mb-1">Tanggal Sertifikasi</label>
@@ -72,13 +72,13 @@
         </div>
         <div class="mb-4">
             <label class="block mb-1">Status Pernikahan</label>
-            <select wire:model="id_status_pernikahan" class="border rounded px-2 py-1 w-full" required>
+            <select wire:model="status_pernikahan_id" class="border rounded px-2 py-1 w-full" required>
                 <option value="">Pilih Status Pernikahan</option>
                 @foreach($statusPernikahan as $s)
-                    <option value="{{ $s->id_status_pernikahan }}">{{ $s->nama }}</option>
+                    <option value="{{ $s->status_pernikahan_id }}">{{ $s->nama }}</option>
                 @endforeach
             </select>
-            @error('id_status_pernikahan') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('status_pernikahan_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Simpan</button>
         <a href="{{ route('konselor.index') }}" class="ml-2 text-gray-600">Batal</a>

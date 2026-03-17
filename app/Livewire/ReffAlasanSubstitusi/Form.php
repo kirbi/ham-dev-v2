@@ -7,7 +7,7 @@ use App\Models\AlasanSubstitusi;
 
 class Form extends Component
 {
-    public $id_alasan_substitusi;
+    public $alasan_id_substitusi;
     public $nama;
     public $deskripsi;
 
@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = AlasanSubstitusi::find($id);
             if ($data) {
-                $this->id_alasan_substitusi = $data->id_alasan_substitusi;
+                $this->alasan_id_substitusi = $data->alasan_id_substitusi;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         AlasanSubstitusi::updateOrCreate(
-            ['id_alasan_substitusi' => $this->id_alasan_substitusi],
+            ['alasan_id_substitusi' => $this->alasan_id_substitusi],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Alasan Substitusi berhasil disimpan.');

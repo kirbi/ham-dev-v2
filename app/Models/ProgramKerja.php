@@ -9,5 +9,4 @@ class ProgramKerja extends Model
 {
     use HasFactory;
     
-    protected $table = 'dham_program_kerja';
 }

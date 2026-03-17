@@ -9,7 +9,7 @@ use App\Models\StatusPernikahan;
 
 class Form extends Component
 {
-    public $id_konselor;
+    public $id;
     public $nama;
     public $email;
     public $alamat;
@@ -19,10 +19,10 @@ class Form extends Component
     public $jenis_kelamin;
     public $tempat_lahir;
     public $tanggal_lahir;
-    public $id_pendidikan;
+    public $pendidikan_id;
     public $tanggal_sertifikasi;
     public $status_pegawai;
-    public $id_status_pernikahan;
+    public $status_pernikahan_id;
 
     protected $rules = [
         'nama' => 'required|max:250',
@@ -34,10 +34,10 @@ class Form extends Component
         'jenis_kelamin' => 'required',
         'tempat_lahir' => 'required|max:250',
         'tanggal_lahir' => 'required|date',
-        'id_pendidikan' => 'required|integer',
+        'pendidikan_id' => 'required|integer',
         'tanggal_sertifikasi' => 'required|date',
         'status_pegawai' => 'required',
-        'id_status_pernikahan' => 'required|integer',
+        'status_pernikahan_id' => 'required|integer',
     ];
 
     public function mount($id = null)
@@ -45,7 +45,7 @@ class Form extends Component
         if ($id) {
             $data = Konselor::find($id);
             if ($data) {
-                $this->id_konselor = $data->id_konselor;
+                $this->id = $data->id;
                 $this->nama = $data->nama;
                 $this->email = $data->email;
                 $this->alamat = $data->alamat;
@@ -55,10 +55,10 @@ class Form extends Component
                 $this->jenis_kelamin = $data->jenis_kelamin;
                 $this->tempat_lahir = $data->tempat_lahir;
                 $this->tanggal_lahir = $data->tanggal_lahir;
-                $this->id_pendidikan = $data->id_pendidikan;
+                $this->pendidikan_id = $data->pendidikan_id;
                 $this->tanggal_sertifikasi = $data->tanggal_sertifikasi;
                 $this->status_pegawai = $data->status_pegawai;
-                $this->id_status_pernikahan = $data->id_status_pernikahan;
+                $this->status_pernikahan_id = $data->status_pernikahan_id;
             }
         }
     }
@@ -67,7 +67,7 @@ class Form extends Component
     {
         $this->validate();
         Konselor::updateOrCreate(
-            ['id_konselor' => $this->id_konselor],
+            ['id' => $this->id],
             [
                 'nama' => $this->nama,
                 'email' => $this->email,
@@ -78,10 +78,10 @@ class Form extends Component
                 'jenis_kelamin' => $this->jenis_kelamin,
                 'tempat_lahir' => $this->tempat_lahir,
                 'tanggal_lahir' => $this->tanggal_lahir,
-                'id_pendidikan' => $this->id_pendidikan,
+                'pendidikan_id' => $this->pendidikan_id,
                 'tanggal_sertifikasi' => $this->tanggal_sertifikasi,
                 'status_pegawai' => $this->status_pegawai,
-                'id_status_pernikahan' => $this->id_status_pernikahan,
+                'status_pernikahan_id' => $this->status_pernikahan_id,
                 'deleted' => 0
             ]
         );

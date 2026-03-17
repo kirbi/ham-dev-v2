@@ -8,13 +8,12 @@ use App\Models\InfoTesHiv;
 
 class Form extends Component
 {
-    public $id_info_tes_hiv_konseling;
-    public $id_konseling;
-    public $id_info_tes_hiv;
+    public $konseling_hiv_id;
+    public $info_tes_hiv_id;
 
     protected $rules = [
-        'id_konseling' => 'required|integer',
-        'id_info_tes_hiv' => 'required|integer',
+        'konseling_hiv_id' => 'required|integer',
+        'info_tes_hiv_id' => 'required|integer',
     ];
 
     public function mount($id = null)
@@ -22,9 +21,8 @@ class Form extends Component
         if ($id) {
             $data = InfoTesHivKonseling::find($id);
             if ($data) {
-                $this->id_info_tes_hiv_konseling = $data->id_info_tes_hiv_konseling;
-                $this->id_konseling = $data->id_konseling;
-                $this->id_info_tes_hiv = $data->id_info_tes_hiv;
+                $this->konseling_hiv_id = $data->konseling_hiv_id;
+                $this->info_tes_hiv_id = $data->info_tes_hiv_id;
             }
         }
     }
@@ -33,15 +31,15 @@ class Form extends Component
     {
         $this->validate();
         InfoTesHivKonseling::updateOrCreate(
-            ['id_info_tes_hiv_konseling' => $this->id_info_tes_hiv_konseling],
+            ['konseling_hiv_id' => $this->konseling_hiv_id, 'info_tes_hiv_id' => $this->info_tes_hiv_id],
             [
-                'id_konseling' => $this->id_konseling,
-                'id_info_tes_hiv' => $this->id_info_tes_hiv,
+                'konseling_hiv_id' => $this->konseling_hiv_id,
+                'info_tes_hiv_id' => $this->info_tes_hiv_id,
                 'deleted' => 0
             ]
         );
         session()->flash('success', 'Sumber Info Tes HIV berhasil disimpan.');
-        $this->redirect(route('info-tes-hiv-konseling.index'), navigate:true);
+        $this->redirect(route('info-tes-hiv-konseling.index'), navigate: true);
     }
 
     public function render()

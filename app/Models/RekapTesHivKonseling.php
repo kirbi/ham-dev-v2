@@ -9,20 +9,13 @@ class RekapTesHivKonseling extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_rekap_tes_hiv_konseling';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_rekap_tes_hiv_konseling';
 
     
     protected $fillable = [
-        'deleted', 'id_konseling', 'tempat_tes', 'tanggal', 'hasil'
+        'deleted', 'konseling_hiv_id', 'tempat_tes', 'tanggal', 'hasil'
     ];
 
     public function konseling(){
-        return $this->belongsTo(Konseling::class, 'id_konseling_hiv', 'id_konseling');
+        return $this->belongsTo(Konseling::class, 'konseling_hiv_id');
     }
 }

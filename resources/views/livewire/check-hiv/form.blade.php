@@ -37,23 +37,23 @@
         </div>
         <div class="mb-4">
             <label class="block mb-1">Kabupaten</label>
-            <select wire:model="id_kabupaten" class="border rounded px-2 py-1 w-full" required>
+            <select wire:model="kabupaten_id" class="border rounded px-2 py-1 w-full" required>
                 <option value="">Pilih Kabupaten</option>
                 @foreach($kabupatens as $kab)
-                    <option value="{{ $kab->id_kabupaten }}">{{ $kab->nama }}</option>
+                    <option value="{{ $kab->kabupaten_id }}">{{ $kab->nama }}</option>
                 @endforeach
             </select>
-            @error('id_kabupaten') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('kabupaten_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="mb-4">
             <label class="block mb-1">Kecamatan</label>
-            <select wire:model="id_kecamatan" class="border rounded px-2 py-1 w-full" required>
+            <select wire:model="kecamatan_id" class="border rounded px-2 py-1 w-full" required>
                 <option value="">Pilih Kecamatan</option>
                 @foreach($kecamatans as $kec)
-                    <option value="{{ $kec->id_kecamatan }}">{{ $kec->nama }}</option>
+                    <option value="{{ $kec->kecamatan_id }}">{{ $kec->nama }}</option>
                 @endforeach
             </select>
-            @error('id_kecamatan') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('kecamatan_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="mb-4">
             <label class="block mb-1">Nama Narahubung</label>

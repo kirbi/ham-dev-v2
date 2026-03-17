@@ -7,7 +7,7 @@ use App\Models\StatusTb;
 
 class Form extends Component
 {
-    public $id_status_tb;
+    public $id;
     public $nama;
     public $deskripsi;
 
@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = StatusTb::find($id);
             if ($data) {
-                $this->id_status_tb = $data->id_status_tb;
+                $this->id = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         StatusTb::updateOrCreate(
-            ['id_status_tb' => $this->id_status_tb],
+            ['id' => $this->id],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Status TB berhasil disimpan.');

@@ -7,14 +7,14 @@ use App\Models\RekapTesHivKonseling;
 
 class Form extends Component
 {
-    public $id_rekap_tes_hiv_konseling;
-    public $id_konseling;
+    public $id;
+    public $konseling_hiv_id;
     public $hasil;
     public $tempat_tes;
     public $tanggal;
 
     protected $rules = [
-        'id_konseling' => 'required|integer',
+        'konseling_hiv_id' => 'required|integer',
         'hasil' => 'required',
         'tempat_tes' => 'required',
         'tanggal' => 'required|date',
@@ -25,8 +25,8 @@ class Form extends Component
         if ($id) {
             $data = RekapTesHivKonseling::find($id);
             if ($data) {
-                $this->id_rekap_tes_hiv_konseling = $data->id_rekap_tes_hiv_konseling;
-                $this->id_konseling = $data->id_konseling;
+                $this->id = $data->id;
+                $this->konseling_hiv_id = $data->konseling_hiv_id;
                 $this->hasil = $data->hasil;
                 $this->tempat_tes = $data->tempat_tes;
                 $this->tanggal = $data->tanggal;
@@ -38,9 +38,9 @@ class Form extends Component
     {
         $this->validate();
         RekapTesHivKonseling::updateOrCreate(
-            ['id_rekap_tes_hiv_konseling' => $this->id_rekap_tes_hiv_konseling],
+            ['id' => $this->id],
             [
-                'id_konseling' => $this->id_konseling,
+                'konseling_hiv_id' => $this->konseling_hiv_id,
                 'hasil' => $this->hasil,
                 'tempat_tes' => $this->tempat_tes,
                 'tanggal' => $this->tanggal,

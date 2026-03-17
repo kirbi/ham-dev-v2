@@ -10,25 +10,25 @@ use App\Models\KategoriPemeriksaan;
 
 class Form extends Component
 {
-    public $id_pemeriksaan_klinis;
-    public $id_pasien;
+    public $id;
+    public $pasien_id;
     public $standar_klinis;
     public $jumlah_cd4;
     public $viral_load;
     public $tanggal_pemeriksaan;
     public $tanggal_pemeriksaan_selanjutnya;
-    public $id_status_fungsional;
+    public $status_fungsional_id;
     public $lain_lain;
     public $berat_badan;
-    public $id_kategori_pemeriksaan;
+    public $kategori_pemeriksaan_id;
 
     protected $rules = [
-        'id_pasien' => 'required|integer',
+        'pasien_id' => 'required|integer',
         'standar_klinis' => 'required',
         'tanggal_pemeriksaan' => 'required|date',
-        'id_status_fungsional' => 'required|integer',
+        'status_fungsional_id' => 'required|integer',
         'berat_badan' => 'required',
-        'id_kategori_pemeriksaan' => 'required|integer',
+        'kategori_pemeriksaan_id' => 'required|integer',
         'jumlah_cd4' => 'nullable|integer',
         'viral_load' => 'nullable|integer',
     ];
@@ -38,17 +38,17 @@ class Form extends Component
         if ($id) {
             $data = PemeriksaanKlinis::find($id);
             if ($data) {
-                $this->id_pemeriksaan_klinis = $data->id_pemeriksaan_klinis;
-                $this->id_pasien = $data->id_pasien;
+                $this->id = $data->id;
+                $this->pasien_id = $data->pasien_id;
                 $this->standar_klinis = $data->standar_klinis;
                 $this->jumlah_cd4 = $data->jumlah_cd4;
                 $this->viral_load = $data->viral_load;
                 $this->tanggal_pemeriksaan = $data->tanggal_pemeriksaan;
                 $this->tanggal_pemeriksaan_selanjutnya = $data->tanggal_pemeriksaan_selanjutnya;
-                $this->id_status_fungsional = $data->id_status_fungsional;
+                $this->status_fungsional_id = $data->status_fungsional_id;
                 $this->lain_lain = $data->lain_lain;
                 $this->berat_badan = $data->berat_badan;
-                $this->id_kategori_pemeriksaan = $data->id_kategori_pemeriksaan;
+                $this->kategori_pemeriksaan_id = $data->kategori_pemeriksaan_id;
             }
         }
     }
@@ -57,18 +57,18 @@ class Form extends Component
     {
         $this->validate();
         PemeriksaanKlinis::updateOrCreate(
-            ['id_pemeriksaan_klinis' => $this->id_pemeriksaan_klinis],
+            ['id' => $this->id],
             [
-                'id_pasien' => $this->id_pasien,
+                'pasien_id' => $this->pasien_id,
                 'standar_klinis' => $this->standar_klinis,
                 'jumlah_cd4' => $this->jumlah_cd4,
                 'viral_load' => $this->viral_load,
                 'tanggal_pemeriksaan' => $this->tanggal_pemeriksaan,
                 'tanggal_pemeriksaan_selanjutnya' => $this->tanggal_pemeriksaan_selanjutnya,
-                'id_status_fungsional' => $this->id_status_fungsional,
+                'status_fungsional_id' => $this->status_fungsional_id,
                 'lain_lain' => $this->lain_lain,
                 'berat_badan' => $this->berat_badan,
-                'id_kategori_pemeriksaan' => $this->id_kategori_pemeriksaan,
+                'kategori_pemeriksaan_id' => $this->kategori_pemeriksaan_id,
                 'deleted' => 0
             ]
         );

@@ -9,24 +9,17 @@ class Kecamatan extends Model
 {
     use HasFactory;
     
-    protected $table = 'mref_kecamatan';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_kecamatan';
 
     
     protected $fillable = [
-        'deleted', 'nama', 'id_kecamatan', 'id_kabupaten'
+        'deleted', 'nama', 'kabupaten_id'
     ];
     
     public function kabupaten(){
-        return $this->belongsTo(Kabupaten::class, 'id_kabupaten', 'id_kabupaten');
+        return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
     }
         
     public function desa(){
-        return $this->hasMany(Desa::class, 'id_kecamatan', 'id_kecamatan');
+        return $this->hasMany(Desa::class, 'kecamatan_id');
     }
 }

@@ -20,8 +20,8 @@
                 <td class="py-2">{{ $item->deskripsi }}</td>
                 <td class="py-2">{{ $item->kode }}</td>
                 <td class="py-2">
-                    <a href="{{ route('reff-infeksi-oportunistik.edit', $item->id_infeksi_oportunistik) }}" class="text-blue-500">Ubah</a>
-                    <button wire:click="$emit('delete', {{ $item->id_infeksi_oportunistik }})" class="text-red-500 ml-2">Hapus</button>
+                    <a href="{{ route('reff-infeksi-oportunistik.edit', $item->id) }}" class="text-blue-500">Ubah</a>
+                    <button wire:click="$emit('delete', {{ $item->id }})" class="text-red-500 ml-2">Hapus</button>
                 </td>
             </tr>
             @endforeach

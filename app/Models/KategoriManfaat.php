@@ -9,13 +9,6 @@ class KategoriManfaat extends Model
 {
     use HasFactory;
     
-    protected $table = 'mref_kategori_manfaat';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_kategori_manfaat';
 
     
     protected $fillable = [

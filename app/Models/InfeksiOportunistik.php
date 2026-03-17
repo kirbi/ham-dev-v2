@@ -9,13 +9,6 @@ class InfeksiOportunistik extends Model
 {
     use HasFactory;
     
-    protected $table = 'mref_infeksi_oportunistik';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_infeksi_oportunistik';
 
     
     protected $fillable = [

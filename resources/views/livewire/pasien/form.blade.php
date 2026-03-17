@@ -177,50 +177,50 @@
 
                     <!-- Pendidikan -->
                     <div>
-                        <label for="id_pendidikan_terakhir" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label for="pendidikan_id_terakhir" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Pendidikan Terakhir <span class="text-red-500">*</span>
                         </label>
-                        <select wire:model="id_pendidikan_terakhir" 
-                                id="id_pendidikan_terakhir"
-                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white @error('id_pendidikan_terakhir') border-red-500 @enderror">
+                        <select wire:model="pendidikan_id_terakhir" 
+                                id="pendidikan_id_terakhir"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white @error('pendidikan_id_terakhir') border-red-500 @enderror">
                             <option value="">Pilih Pendidikan</option>
                             @foreach($pendidikans as $pendidikan)
                                 <option value="{{ $pendidikan->id }}">{{ $pendidikan->nama }}</option>
                             @endforeach
                         </select>
-                        @error('id_pendidikan_terakhir') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
+                        @error('pendidikan_id_terakhir') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
                     </div>
 
                     <!-- Pekerjaan -->
                     <div>
-                        <label for="id_pekerjaan" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label for="pekerjaan_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Pekerjaan <span class="text-red-500">*</span>
                         </label>
-                        <select wire:model="id_pekerjaan" 
-                                id="id_pekerjaan"
-                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white @error('id_pekerjaan') border-red-500 @enderror">
+                        <select wire:model="pekerjaan_id" 
+                                id="pekerjaan_id"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white @error('pekerjaan_id') border-red-500 @enderror">
                             <option value="">Pilih Pekerjaan</option>
                             @foreach($pekerjaans as $pekerjaan)
                                 <option value="{{ $pekerjaan->id }}">{{ $pekerjaan->nama }}</option>
                             @endforeach
                         </select>
-                        @error('id_pekerjaan') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
+                        @error('pekerjaan_id') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
                     </div>
 
                     <!-- Status Pernikahan -->
                     <div>
-                        <label for="id_status_pernikahan" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label for="status_pernikahan_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Status Pernikahan <span class="text-red-500">*</span>
                         </label>
-                        <select wire:model="id_status_pernikahan" 
-                                id="id_status_pernikahan"
-                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white @error('id_status_pernikahan') border-red-500 @enderror">
+                        <select wire:model="status_pernikahan_id" 
+                                id="status_pernikahan_id"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white @error('status_pernikahan_id') border-red-500 @enderror">
                             <option value="">Pilih Status</option>
                             @foreach($statusPernikahans as $status)
                                 <option value="{{ $status->id }}">{{ $status->nama }}</option>
                             @endforeach
                         </select>
-                        @error('id_status_pernikahan') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
+                        @error('status_pernikahan_id') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
                     </div>
                 </div>
             </div>
@@ -266,11 +266,11 @@
 
                     <!-- Provinsi -->
                     <div>
-                        <label for="id_provinsi" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label for="provinsi_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Provinsi
                         </label>
-                        <select wire:model.live="id_provinsi" 
-                                id="id_provinsi"
+                        <select wire:model.live="provinsi_id" 
+                                id="provinsi_id"
                                 class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white">
                             <option value="">Pilih Provinsi</option>
                             @foreach($provinsis as $provinsi)
@@ -281,13 +281,13 @@
 
                     <!-- Kabupaten -->
                     <div>
-                        <label for="id_kabupaten" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label for="kabupaten_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Kabupaten/Kota
                         </label>
-                        <select wire:model.live="id_kabupaten" 
-                                id="id_kabupaten"
+                        <select wire:model.live="kabupaten_id" 
+                                id="kabupaten_id"
                                 class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-                                {{ !$id_provinsi ? 'disabled' : '' }}>
+                                {{ !$provinsi_id ? 'disabled' : '' }}>
                             <option value="">Pilih Kabupaten/Kota</option>
                             @foreach($kabupatens as $kabupaten)
                                 <option value="{{ $kabupaten->id }}">{{ $kabupaten->nama }}</option>
@@ -297,13 +297,13 @@
 
                     <!-- Kecamatan -->
                     <div>
-                        <label for="id_kecamatan" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label for="kecamatan_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Kecamatan
                         </label>
-                        <select wire:model.live="id_kecamatan" 
-                                id="id_kecamatan"
+                        <select wire:model.live="kecamatan_id" 
+                                id="kecamatan_id"
                                 class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-                                {{ !$id_kabupaten ? 'disabled' : '' }}>
+                                {{ !$kabupaten_id ? 'disabled' : '' }}>
                             <option value="">Pilih Kecamatan</option>
                             @foreach($kecamatans as $kecamatan)
                                 <option value="{{ $kecamatan->id }}">{{ $kecamatan->nama }}</option>
@@ -313,13 +313,13 @@
 
                     <!-- Desa -->
                     <div>
-                        <label for="id_desa" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label for="desa_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Desa/Kelurahan
                         </label>
-                        <select wire:model="id_desa" 
-                                id="id_desa"
+                        <select wire:model="desa_id" 
+                                id="desa_id"
                                 class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-                                {{ !$id_kecamatan ? 'disabled' : '' }}>
+                                {{ !$kecamatan_id ? 'disabled' : '' }}>
                             <option value="">Pilih Desa/Kelurahan</option>
                             @foreach($desas as $desa)
                                 <option value="{{ $desa->id }}">{{ $desa->nama }}</option>
@@ -335,18 +335,18 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Konselor -->
                     <div>
-                        <label for="id_konselor" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        <label for="konselor_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                             Konselor <span class="text-red-500">*</span>
                         </label>
-                        <select wire:model="id_konselor" 
-                                id="id_konselor"
-                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white @error('id_konselor') border-red-500 @enderror">
+                        <select wire:model="konselor_id" 
+                                id="konselor_id"
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white @error('konselor_id') border-red-500 @enderror">
                             <option value="">Pilih Konselor</option>
                             @foreach($konselors as $konselor)
                                 <option value="{{ $konselor->id }}">{{ $konselor->nama }}</option>
                             @endforeach
                         </select>
-                        @error('id_konselor') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
+                        @error('konselor_id') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
                     </div>
 
                     <!-- Jenis Pasien -->

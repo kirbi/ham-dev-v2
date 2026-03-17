@@ -9,13 +9,6 @@ class TempatTerapi extends Model
 {
     use HasFactory;
     
-    protected $table = 'mref_tempat_terapi';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_tempat_terapi';
 
     
     protected $fillable = [

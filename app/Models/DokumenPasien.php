@@ -9,5 +9,4 @@ class DokumenPasien extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_dokumen_pasien';
 }

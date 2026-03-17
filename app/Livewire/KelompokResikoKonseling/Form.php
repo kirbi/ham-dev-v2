@@ -8,15 +8,14 @@ use App\Models\KelompokResiko;
 
 class Form extends Component
 {
-    public $id_kelompok_resiko_konseling;
-    public $id_konseling;
-    public $id_kelompok_resiko;
+    public $konseling_hiv_id;
+    public $kelompok_resiko_id;
     public $lama_tahun;
     public $lama_bulan;
 
     protected $rules = [
-        'id_konseling' => 'required|integer',
-        'id_kelompok_resiko' => 'required|integer',
+        'konseling_hiv_id' => 'required|integer',
+        'kelompok_resiko_id' => 'required|integer',
         'lama_tahun' => 'required|integer',
         'lama_bulan' => 'required|integer',
     ];
@@ -26,9 +25,8 @@ class Form extends Component
         if ($id) {
             $data = KelompokResikoKonseling::find($id);
             if ($data) {
-                $this->id_kelompok_resiko_konseling = $data->id_kelompok_resiko_konseling;
-                $this->id_konseling = $data->id_konseling;
-                $this->id_kelompok_resiko = $data->id_kelompok_resiko;
+                $this->konseling_hiv_id = $data->konseling_hiv_id;
+                $this->kelompok_resiko_id = $data->kelompok_resiko_id;
                 $this->lama_tahun = $data->lama_tahun;
                 $this->lama_bulan = $data->lama_bulan;
             }
@@ -39,17 +37,17 @@ class Form extends Component
     {
         $this->validate();
         KelompokResikoKonseling::updateOrCreate(
-            ['id_kelompok_resiko_konseling' => $this->id_kelompok_resiko_konseling],
+            ['konseling_hiv_id' => $this->konseling_hiv_id, 'kelompok_resiko_id' => $this->kelompok_resiko_id],
             [
-                'id_konseling' => $this->id_konseling,
-                'id_kelompok_resiko' => $this->id_kelompok_resiko,
+                'konseling_hiv_id' => $this->konseling_hiv_id,
+                'kelompok_resiko_id' => $this->kelompok_resiko_id,
                 'lama_tahun' => $this->lama_tahun,
                 'lama_bulan' => $this->lama_bulan,
                 'deleted' => 0
             ]
         );
         session()->flash('success', 'Kelompok Resiko Konseling berhasil disimpan.');
-        $this->redirect(route('kelompok-resiko-konseling.index'), navigate:true);
+        $this->redirect(route('kelompok-resiko-konseling.index'), navigate: true);
     }
 
     public function render()

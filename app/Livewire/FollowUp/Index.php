@@ -22,6 +22,12 @@ class Index extends Component
         $this->resetPage();
     }
 
+    public function delete($id)
+    {
+        RiwayatPerawatanPasien::where('id', $id)->update(['deleted' => 1]);
+        session()->flash('success', 'Data follow up berhasil dihapus.');
+    }
+
     public function render()
     {
         $query = RiwayatPerawatanPasien::where('deleted', 0)

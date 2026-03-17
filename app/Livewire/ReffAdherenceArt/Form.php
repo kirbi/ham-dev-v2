@@ -7,7 +7,7 @@ use App\Models\AdherenceArt;
 
 class Form extends Component
 {
-    public $id_adherence_art;
+    public $id;
     public $nama;
     public $deskripsi;
 
@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = AdherenceArt::find($id);
             if ($data) {
-                $this->id_adherence_art = $data->id_adherence_art;
+                $this->id = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         AdherenceArt::updateOrCreate(
-            ['id_adherence_art' => $this->id_adherence_art],
+            ['id' => $this->id],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Adherence Art berhasil disimpan.');

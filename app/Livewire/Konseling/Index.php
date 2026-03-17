@@ -22,6 +22,12 @@ class Index extends Component
         $this->resetPage();
     }
 
+    public function delete($id)
+    {
+        KonselingHiv::where('id', $id)->update(['deleted' => 1]);
+        session()->flash('success', 'Data konseling berhasil dihapus.');
+    }
+
     public function render()
     {
         $query = KonselingHiv::where('deleted', 0)

@@ -64,7 +64,32 @@ Route::middleware(['auth', 'role:admin,konselor'])->group(function () {
                                     Route::get('/riwayat-mitra-seksual', App\Livewire\RiwayatMitraSeksual\Index::class)->name('riwayat-mitra-seksual.index');
                                     Route::get('/riwayat-mitra-seksual/create', App\Livewire\RiwayatMitraSeksual\Form::class)->name('riwayat-mitra-seksual.create');
                                     Route::get('/riwayat-mitra-seksual/{id}/edit', App\Livewire\RiwayatMitraSeksual\Form::class)->name('riwayat-mitra-seksual.edit');
-    
+
+    // Follow Up (Livewire)
+    Route::get('/followup', App\Livewire\FollowUp\Index::class)->name('followup.index');
+    Route::get('/followup/create/{id_pasien?}', App\Livewire\FollowUp\Form::class)->name('followup.create');
+    Route::get('/followup/{id}/edit', App\Livewire\FollowUp\Form::class)->name('followup.edit');
+
+    // Konseling HIV (Livewire)
+    Route::get('/konseling', App\Livewire\Konseling\Index::class)->name('konseling.index');
+    Route::get('/konseling/create/{id_pasien?}', App\Livewire\Konseling\Form::class)->name('konseling.create');
+    Route::get('/konseling/{id}/edit', App\Livewire\Konseling\Form::class)->name('konseling.edit');
+
+    // Tes HIV Konseling (Livewire)
+    Route::get('/tes-hiv-konseling', App\Livewire\TesHivKonseling\Index::class)->name('tes-hiv-konseling.index');
+    Route::get('/tes-hiv-konseling/create', App\Livewire\TesHivKonseling\Form::class)->name('tes-hiv-konseling.create');
+    Route::get('/tes-hiv-konseling/{id}/edit', App\Livewire\TesHivKonseling\Form::class)->name('tes-hiv-konseling.edit');
+
+    // Riwayat Terapi ART (Livewire)
+    Route::get('/riwayat-terapi-art', App\Livewire\RiwayatTerapiArt\Index::class)->name('riwayat-terapi-art.index');
+    Route::get('/riwayat-terapi-art/create', App\Livewire\RiwayatTerapiArt\Form::class)->name('riwayat-terapi-art.create');
+    Route::get('/riwayat-terapi-art/{id}/edit', App\Livewire\RiwayatTerapiArt\Form::class)->name('riwayat-terapi-art.edit');
+
+    // Terapi ART Pasien (Livewire)
+    Route::get('/terapi-art-pasien', App\Livewire\TerapiArtPasien\Index::class)->name('terapi-art-pasien.index');
+    Route::get('/terapi-art-pasien/create', App\Livewire\TerapiArtPasien\Form::class)->name('terapi-art-pasien.create');
+    Route::get('/terapi-art-pasien/{id}/edit', App\Livewire\TerapiArtPasien\Form::class)->name('terapi-art-pasien.edit');
+
      // RBAC-protected routes for ReffAdherenceArt
      Route::get('/reff-adherence-art', App\Livewire\ReffAdherenceArt\Index::class)->name('reff-adherence-art.index');
      Route::get('/reff-adherence-art/create', App\Livewire\ReffAdherenceArt\Form::class)->name('reff-adherence-art.create');
@@ -107,6 +132,102 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     
     // Download pasien data (admin only)
     Route::get('/pasien/{id}/download', [PasienController::class, 'download'])->name('pasien.download');
+
+    // Reference data — Wilayah
+    Route::get('/reff-provinsi', App\Livewire\ReffProvinsi\Index::class)->name('reff-provinsi.index');
+    Route::get('/reff-provinsi/create', App\Livewire\ReffProvinsi\Form::class)->name('reff-provinsi.create');
+    Route::get('/reff-provinsi/{id}/edit', App\Livewire\ReffProvinsi\Form::class)->name('reff-provinsi.edit');
+
+    Route::get('/reff-kabupaten', App\Livewire\ReffKabupaten\Index::class)->name('reff-kabupaten.index');
+    Route::get('/reff-kabupaten/create', App\Livewire\ReffKabupaten\Form::class)->name('reff-kabupaten.create');
+    Route::get('/reff-kabupaten/{id}/edit', App\Livewire\ReffKabupaten\Form::class)->name('reff-kabupaten.edit');
+
+    Route::get('/reff-kecamatan', App\Livewire\ReffKecamatan\Index::class)->name('reff-kecamatan.index');
+    Route::get('/reff-kecamatan/create', App\Livewire\ReffKecamatan\Form::class)->name('reff-kecamatan.create');
+    Route::get('/reff-kecamatan/{id}/edit', App\Livewire\ReffKecamatan\Form::class)->name('reff-kecamatan.edit');
+
+    Route::get('/reff-desa', App\Livewire\ReffDesa\Index::class)->name('reff-desa.index');
+    Route::get('/reff-desa/create', App\Livewire\ReffDesa\Form::class)->name('reff-desa.create');
+    Route::get('/reff-desa/{id}/edit', App\Livewire\ReffDesa\Form::class)->name('reff-desa.edit');
+
+    // Reference data — Data Pasien
+    Route::get('/reff-jenis-kelamin', App\Livewire\ReffJenisKelamin\Index::class)->name('reff-jenis-kelamin.index');
+    Route::get('/reff-jenis-kelamin/create', App\Livewire\ReffJenisKelamin\Form::class)->name('reff-jenis-kelamin.create');
+    Route::get('/reff-jenis-kelamin/{id}/edit', App\Livewire\ReffJenisKelamin\Form::class)->name('reff-jenis-kelamin.edit');
+
+    Route::get('/reff-pendidikan', App\Livewire\ReffPendidikan\Index::class)->name('reff-pendidikan.index');
+    Route::get('/reff-pendidikan/create', App\Livewire\ReffPendidikan\Form::class)->name('reff-pendidikan.create');
+    Route::get('/reff-pendidikan/{id}/edit', App\Livewire\ReffPendidikan\Form::class)->name('reff-pendidikan.edit');
+
+    Route::get('/reff-pekerjaan', App\Livewire\ReffPekerjaan\Index::class)->name('reff-pekerjaan.index');
+    Route::get('/reff-pekerjaan/create', App\Livewire\ReffPekerjaan\Form::class)->name('reff-pekerjaan.create');
+    Route::get('/reff-pekerjaan/{id}/edit', App\Livewire\ReffPekerjaan\Form::class)->name('reff-pekerjaan.edit');
+
+    Route::get('/reff-status-pernikahan', App\Livewire\ReffStatusPernikahan\Index::class)->name('reff-status-pernikahan.index');
+    Route::get('/reff-status-pernikahan/create', App\Livewire\ReffStatusPernikahan\Form::class)->name('reff-status-pernikahan.create');
+    Route::get('/reff-status-pernikahan/{id}/edit', App\Livewire\ReffStatusPernikahan\Form::class)->name('reff-status-pernikahan.edit');
+
+    Route::get('/reff-kategori-manfaat', App\Livewire\ReffKategoriManfaat\Index::class)->name('reff-kategori-manfaat.index');
+    Route::get('/reff-kategori-manfaat/create', App\Livewire\ReffKategoriManfaat\Form::class)->name('reff-kategori-manfaat.create');
+    Route::get('/reff-kategori-manfaat/{id}/edit', App\Livewire\ReffKategoriManfaat\Form::class)->name('reff-kategori-manfaat.edit');
+
+    Route::get('/reff-mitra-seksual', App\Livewire\ReffMitraSeksual\Index::class)->name('reff-mitra-seksual.index');
+    Route::get('/reff-mitra-seksual/create', App\Livewire\ReffMitraSeksual\Form::class)->name('reff-mitra-seksual.create');
+    Route::get('/reff-mitra-seksual/{id}/edit', App\Livewire\ReffMitraSeksual\Form::class)->name('reff-mitra-seksual.edit');
+
+    Route::get('/reff-kategori-pemeriksaan', App\Livewire\ReffKategoriPemeriksaan\Index::class)->name('reff-kategori-pemeriksaan.index');
+    Route::get('/reff-kategori-pemeriksaan/create', App\Livewire\ReffKategoriPemeriksaan\Form::class)->name('reff-kategori-pemeriksaan.create');
+    Route::get('/reff-kategori-pemeriksaan/{id}/edit', App\Livewire\ReffKategoriPemeriksaan\Form::class)->name('reff-kategori-pemeriksaan.edit');
+
+    // Reference data — Klinis HIV
+    Route::get('/reff-alasan-tes-hiv', App\Livewire\ReffAlasanTesHiv\Index::class)->name('reff-alasan-tes-hiv.index');
+    Route::get('/reff-alasan-tes-hiv/create', App\Livewire\ReffAlasanTesHiv\Form::class)->name('reff-alasan-tes-hiv.create');
+    Route::get('/reff-alasan-tes-hiv/{id}/edit', App\Livewire\ReffAlasanTesHiv\Form::class)->name('reff-alasan-tes-hiv.edit');
+
+    Route::get('/reff-info-tes-hiv', App\Livewire\ReffInfoTesHiv\Index::class)->name('reff-info-tes-hiv.index');
+    Route::get('/reff-info-tes-hiv/create', App\Livewire\ReffInfoTesHiv\Form::class)->name('reff-info-tes-hiv.create');
+    Route::get('/reff-info-tes-hiv/{id}/edit', App\Livewire\ReffInfoTesHiv\Form::class)->name('reff-info-tes-hiv.edit');
+
+    Route::get('/reff-entry-point', App\Livewire\ReffEntryPoint\Index::class)->name('reff-entry-point.index');
+    Route::get('/reff-entry-point/create', App\Livewire\ReffEntryPoint\Form::class)->name('reff-entry-point.create');
+    Route::get('/reff-entry-point/{id}/edit', App\Livewire\ReffEntryPoint\Form::class)->name('reff-entry-point.edit');
+
+    Route::get('/reff-faktor-resiko', App\Livewire\ReffFaktorResiko\Index::class)->name('reff-faktor-resiko.index');
+    Route::get('/reff-faktor-resiko/create', App\Livewire\ReffFaktorResiko\Form::class)->name('reff-faktor-resiko.create');
+    Route::get('/reff-faktor-resiko/{id}/edit', App\Livewire\ReffFaktorResiko\Form::class)->name('reff-faktor-resiko.edit');
+
+    Route::get('/reff-kelompok-resiko', App\Livewire\ReffKelompokResiko\Index::class)->name('reff-kelompok-resiko.index');
+    Route::get('/reff-kelompok-resiko/create', App\Livewire\ReffKelompokResiko\Form::class)->name('reff-kelompok-resiko.create');
+    Route::get('/reff-kelompok-resiko/{id}/edit', App\Livewire\ReffKelompokResiko\Form::class)->name('reff-kelompok-resiko.edit');
+
+    Route::get('/reff-tingkat-resiko-hiv', App\Livewire\ReffTingkatResikoHiv\Index::class)->name('reff-tingkat-resiko-hiv.index');
+    Route::get('/reff-tingkat-resiko-hiv/create', App\Livewire\ReffTingkatResikoHiv\Form::class)->name('reff-tingkat-resiko-hiv.create');
+    Route::get('/reff-tingkat-resiko-hiv/{id}/edit', App\Livewire\ReffTingkatResikoHiv\Form::class)->name('reff-tingkat-resiko-hiv.edit');
+
+    Route::get('/reff-status-hiv', App\Livewire\ReffStatusHiv\Index::class)->name('reff-status-hiv.index');
+    Route::get('/reff-status-hiv/create', App\Livewire\ReffStatusHiv\Form::class)->name('reff-status-hiv.create');
+    Route::get('/reff-status-hiv/{id}/edit', App\Livewire\ReffStatusHiv\Form::class)->name('reff-status-hiv.edit');
+
+    Route::get('/reff-indikasi-inisiasi-art', App\Livewire\ReffIndikasiInisiasiArt\Index::class)->name('reff-indikasi-inisiasi-art.index');
+    Route::get('/reff-indikasi-inisiasi-art/create', App\Livewire\ReffIndikasiInisiasiArt\Form::class)->name('reff-indikasi-inisiasi-art.create');
+    Route::get('/reff-indikasi-inisiasi-art/{id}/edit', App\Livewire\ReffIndikasiInisiasiArt\Form::class)->name('reff-indikasi-inisiasi-art.edit');
+
+    Route::get('/reff-jenis-terapi', App\Livewire\ReffJenisTerapi\Index::class)->name('reff-jenis-terapi.index');
+    Route::get('/reff-jenis-terapi/create', App\Livewire\ReffJenisTerapi\Form::class)->name('reff-jenis-terapi.create');
+    Route::get('/reff-jenis-terapi/{id}/edit', App\Livewire\ReffJenisTerapi\Form::class)->name('reff-jenis-terapi.edit');
+
+    Route::get('/reff-tempat-terapi', App\Livewire\ReffTempatTerapi\Index::class)->name('reff-tempat-terapi.index');
+    Route::get('/reff-tempat-terapi/create', App\Livewire\ReffTempatTerapi\Form::class)->name('reff-tempat-terapi.create');
+    Route::get('/reff-tempat-terapi/{id}/edit', App\Livewire\ReffTempatTerapi\Form::class)->name('reff-tempat-terapi.edit');
+
+    // Reference data — TB
+    Route::get('/reff-klasifikasi-tb', App\Livewire\ReffKlasifikasiTb\Index::class)->name('reff-klasifikasi-tb.index');
+    Route::get('/reff-klasifikasi-tb/create', App\Livewire\ReffKlasifikasiTb\Form::class)->name('reff-klasifikasi-tb.create');
+    Route::get('/reff-klasifikasi-tb/{id}/edit', App\Livewire\ReffKlasifikasiTb\Form::class)->name('reff-klasifikasi-tb.edit');
+
+    Route::get('/reff-paduan-tb', App\Livewire\ReffPaduanTb\Index::class)->name('reff-paduan-tb.index');
+    Route::get('/reff-paduan-tb/create', App\Livewire\ReffPaduanTb\Form::class)->name('reff-paduan-tb.create');
+    Route::get('/reff-paduan-tb/{id}/edit', App\Livewire\ReffPaduanTb\Form::class)->name('reff-paduan-tb.edit');
 
         // Konselor (Livewire)
         Route::get('/konselor', App\Livewire\Konselor\Index::class)->name('konselor.index');

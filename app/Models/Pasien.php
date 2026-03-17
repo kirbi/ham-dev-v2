@@ -9,8 +9,6 @@ class Pasien extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_pasien';
-    protected $primaryKey = 'id_pasien';
 
     
     protected $fillable = [
@@ -26,30 +24,30 @@ class Pasien extends Model
         'alamat',
         'no_hp',
         'id_pendidikan_terakhir',
-        'id_pekerjaan',
-        'id_status_pernikahan',
+        'pekerjaan_id',
+        'status_pernikahan_id',
         'foto_pasien',
-        'id_konselor',
-        'id_status_hiv',
+        'konselor_id',
+        'status_hiv_id',
         'tanggal_konfirmasi_hiv',
         'tempat_konfirmasi_hiv',
-        'id_entry_point',
+        'entry_point_id',
         'nama_pmo',
         'alamat_pmo',
         'hubungan_pmo',
         'no_hp_pmo',
-        'id_paduan_art',
-        'id_iiart',
+        'paduan_art_id',
+        'id',
         'riwayat_alergi_obat',
         'status_hiv',
         'jenis_pasien',
         'status_aktif',
         'agama',
         'tempat_tinggal',
-        'id_provinsi',
-        'id_kabupaten',
-        'id_kecamatan',
-        'id_desa',
+        'provinsi_id',
+        'kabupaten_id',
+        'kecamatan_id',
+        'desa_id',
         'no_kk',
         'ibu_kandung',
         'tanggal_rujuk_masuk',
@@ -65,73 +63,73 @@ class Pasien extends Model
     ];
 
     // public function jenisKelamin(){
-    //     return $this->belongsTo(JenisKelamin::class, 'id_jenis_kelamin', 'id_jenis_kelamin');
+    //     return $this->belongsTo(JenisKelamin::class, 'jenis_kelamin_id');
     // }
     public function konselor(){
-        return $this->belongsTo(Konselor::class, 'id_konselor', 'id_konselor');
+        return $this->belongsTo(Konselor::class, 'konselor_id');
     }
     public function pasienFile(){
-        return $this->hasMany(PasienFile::class, 'id_pasien', 'id_pasien');
+        return $this->hasMany(PasienFile::class, 'pasien_id');
     }
 
     public function pekerjaan(){
-        return $this->belongsTo(Pekerjaan::class, 'id_pekerjaan', 'id_pekerjaan')->where('deleted', 0);
+        return $this->belongsTo(Pekerjaan::class, 'pekerjaan_id')->where('deleted', 0);
     }
     public function pemeriksaanKlinis(){
-        return $this->hasMany(PemeriksaanKlinis::class, 'id_pasien', 'id_pasien')->where('deleted', 0);
+        return $this->hasMany(PemeriksaanKlinis::class, 'pasien_id')->where('deleted', 0);
     }
     public function pendidikan(){
-        return $this->belongsTo(Pendidikan::class, 'id_pendidikan_terakhir', 'id_pendidikan')->where('deleted', 0);
+        return $this->belongsTo(Pendidikan::class, 'id_pendidikan_terakhir', 'pendidikan_id')->where('deleted', 0);
     }
     
     public function statusPernikahan(){
-        return $this->belongsTo(StatusPernikahan::class, 'id_status_pernikahan', 'id_status_pernikahan')->where('deleted', 0);
+        return $this->belongsTo(StatusPernikahan::class, 'status_pernikahan_id')->where('deleted', 0);
     }
     
     public function riwayatTerapiArt(){
-        return $this->belongsTo(RiwayatTerapiArt::class, 'id_pasien', 'id_pasien')->where('deleted', 0);
+        return $this->belongsTo(RiwayatTerapiArt::class, 'pasien_id')->where('deleted', 0);
     }
 
     public function riwayaPerawatanPasien(){
-        return $this->hasMany(RiwayatPerawatanPasien::class, 'id_pasien', 'id_pasien')->where('deleted', 0);
+        return $this->hasMany(RiwayatPerawatanPasien::class, 'pasien_id')->where('deleted', 0);
     }
     
     public function riwayatMitraSeksuals(){
-        return $this->hasMany(RiwayatMitraSeksual::class, 'id_pasien', 'id_pasien')->where('deleted', 0);
+        return $this->hasMany(RiwayatMitraSeksual::class, 'pasien_id')->where('deleted', 0);
     }
     public function statusHiv(){
-        return $this->hasOne(StatusHIV::class, 'id_status_hiv', 'id_status_hiv')->where('deleted', 0);
+        return $this->hasOne(StatusHIV::class, 'status_hiv_id')->where('deleted', 0);
     }
     
     public function faktorResikoPasien(){
-        return $this->hasMany(FaktorResikoPasien::class, 'id_pasien', 'id_pasien')->where('deleted', 0);
+        return $this->hasMany(FaktorResikoPasien::class, 'pasien_id')->where('deleted', 0);
     }
     public function entryPoint(){
-        return $this->hasOne(EntryPoint::class, 'id_entry_point', 'id_entry_point')->where('deleted', 0);
+        return $this->hasOne(EntryPoint::class, 'entry_point_id')->where('deleted', 0);
     }
     public function iiart(){
-        return $this->hasOne(IndikasiInisiasiArt::class, 'id_iiart', 'id_iiart')->where('deleted', 0);
+        return $this->hasOne(IndikasiInisiasiArt::class, 'id', 'id')->where('deleted', 0);
     }
     public function paduanArt(){
-        return $this->hasOne(PaduanArt::class, 'id_paduan_art', 'id_paduan_art')->where('deleted', 0);
+        return $this->hasOne(PaduanArt::class, 'paduan_art_id')->where('deleted', 0);
     }
     public function terapiArt(){
-        return $this->hasMany(TerapiArtPasien::class, 'id_pasien', 'id_pasien')->where('deleted', 0);
+        return $this->hasMany(TerapiArtPasien::class, 'pasien_id')->where('deleted', 0);
     }
     public function pengobatanTb(){
-        return $this->hasMany(PengobatanTbHiv::class, 'id_pasien', 'id_pasien')->where('deleted', 0);
+        return $this->hasMany(PengobatanTbHiv::class, 'pasien_id')->where('deleted', 0);
     }
     public function provinsi(){
-        return $this->belongsTo(Provinsi::class, 'id_provinsi', 'id_provinsi');
+        return $this->belongsTo(Provinsi::class, 'provinsi_id');
     }
     public function kabupaten(){
-        return $this->belongsTo(Kabupaten::class, 'id_kabupaten', 'id_kabupaten');
+        return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
     }
     public function kecamatan(){
-        return $this->belongsTo(Kecamatan::class, 'id_kecamatan', 'id_kecamatan');
+        return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
     }
     public function desa(){
-        return $this->belongsTo(Desa::class, 'id_desa', 'id_desa');
+        return $this->belongsTo(Desa::class, 'desa_id');
     }
     public static function aktifTidakAktif(){
         return Pasien::whereIn('status_aktif', ['Aktif', 'Tidak Aktif'])->where(['deleted' => 0])->orderBy('nama', 'asc')->get();
@@ -176,28 +174,28 @@ class Pasien extends Model
             $pasien->where('jenis_pasien', $jenisPasien);
         }
         if($pendidikan){
-            $pasien->where('id_pendidikan', $pendidikan);
+            $pasien->where('pendidikan_id', $pendidikan);
         }
         if($statusPernikahan){
-            $pasien->where('id_status_pernikahan', $statusPernikahan);
+            $pasien->where('status_pernikahan_id', $statusPernikahan);
         }
         if($pekerjaan){
-            $pasien->where('id_pekerjaan', $pekerjaan);
+            $pasien->where('pekerjaan_id', $pekerjaan);
         }
         if($entryPoint){
-            $pasien->where('id_entry_point', $entryPoint);
+            $pasien->where('entry_point_id', $entryPoint);
         }
         if($provinsi){
-            $pasien->where('id_provinsi', $provinsi);
+            $pasien->where('provinsi_id', $provinsi);
         }
         if($kabupaten){
-            $pasien->where('id_kabupaten', $kabupaten);
+            $pasien->where('kabupaten_id', $kabupaten);
         }
         if($kecamatan){
-            $pasien->where('id_kecamatan', $kecamatan);
+            $pasien->where('kecamatan_id', $kecamatan);
         }
         if($desa){
-            $pasien->where('id_desa', $desa);
+            $pasien->where('desa_id', $desa);
         }
         return $pasien;
     }

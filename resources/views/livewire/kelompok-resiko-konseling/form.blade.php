@@ -1,15 +1,15 @@
 <div>
-    <h2 class="text-xl font-bold mb-4">{{ $id_kelompok_resiko_konseling ? 'Edit' : 'Tambah' }} Kelompok Resiko Konseling</h2>
+    <h2 class="text-xl font-bold mb-4">{{ $konseling_hiv_id ? 'Edit' : 'Tambah' }} Kelompok Resiko Konseling</h2>
     <form wire:submit.prevent="save">
         <div class="mb-4">
             <label class="block mb-1">Kelompok Resiko</label>
-            <select wire:model="id_kelompok_resiko" class="border rounded px-2 py-1 w-full" required>
+            <select wire:model="kelompok_resiko_id" class="border rounded px-2 py-1 w-full" required>
                 <option value="">Pilih Kelompok Resiko</option>
                 @foreach($kelompokResikos as $kelompok)
-                    <option value="{{ $kelompok->id_kelompok_resiko }}">{{ $kelompok->nama }}</option>
+                    <option value="{{ $kelompok->id }}">{{ $kelompok->nama }}</option>
                 @endforeach
             </select>
-            @error('id_kelompok_resiko') <span class="text-red-500">{{ $message }}</span> @enderror
+            @error('kelompok_resiko_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="mb-4">
             <label class="block mb-1">Lama Tahun</label>

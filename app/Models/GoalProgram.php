@@ -9,5 +9,4 @@ class GoalProgram extends Model
 {
     use HasFactory;
     
-    protected $table = 'dham_goal_program';
 }

@@ -18,8 +18,8 @@
                 <td class="py-2">{{ $item->nama }}</td>
                 <td class="py-2">{{ $item->deskripsi }}</td>
                 <td class="py-2">
-                    <a href="{{ route('reff-status-tb.edit', $item->id_status_tb) }}" class="text-blue-500">Ubah</a>
-                    <button wire:click="$emit('delete', {{ $item->id_status_tb }})" class="text-red-500 ml-2">Hapus</button>
+                    <a href="{{ route('reff-status-tb.edit', $item->status_tb_id) }}" class="text-blue-500">Ubah</a>
+                    <button wire:click="$emit('delete', {{ $item->status_tb_id }})" class="text-red-500 ml-2">Hapus</button>
                 </td>
             </tr>
             @endforeach

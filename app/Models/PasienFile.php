@@ -8,11 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class PasienFile extends Model
 {
     use HasFactory;
-    protected $table ='dpha_pasien_file';
-    protected $primaryKey = 'id_file';
 
   
     protected $fillable = [
-        'nama', 'path', 'berkas', 'deleted', 'id_pasien'
+        'nama', 'path', 'berkas', 'deleted', 'pasien_id'
     ];
 }

@@ -9,13 +9,6 @@ class TingkatResikoHiv extends Model
 {
     use HasFactory;
     
-    protected $table = 'mref_tingkat_resiko_hiv';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_tingkat_resiko_hiv';
 
     
     protected $fillable = [

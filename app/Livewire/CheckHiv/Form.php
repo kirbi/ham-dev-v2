@@ -9,7 +9,7 @@ use App\Models\Kecamatan;
 
 class Form extends Component
 {
-    public $id_check_hiv;
+    public $id;
     public $nama_kegiatan;
     public $nama_tempat;
     public $deskripsi_kegiatan;
@@ -17,8 +17,8 @@ class Form extends Component
     public $hadir;
     public $jumlah_positif;
     public $jumlah_negatif;
-    public $id_kabupaten;
-    public $id_kecamatan;
+    public $kabupaten_id;
+    public $kecamatan_id;
     public $nama_narahubung;
     public $kontak_narahubung;
 
@@ -29,8 +29,8 @@ class Form extends Component
         'hadir' => 'integer|required',
         'jumlah_positif' => 'integer|required',
         'jumlah_negatif' => 'integer|required',
-        'id_kabupaten' => 'integer|required',
-        'id_kecamatan' => 'integer|required',
+        'kabupaten_id' => 'integer|required',
+        'kecamatan_id' => 'integer|required',
         'nama_narahubung' => 'required|max:250',
         'kontak_narahubung' => 'required|max:50',
     ];
@@ -40,7 +40,7 @@ class Form extends Component
         if ($id) {
             $data = CheckHiv::find($id);
             if ($data) {
-                $this->id_check_hiv = $data->id_check_hiv;
+                $this->id = $data->id;
                 $this->nama_kegiatan = $data->nama_kegiatan;
                 $this->nama_tempat = $data->nama_tempat;
                 $this->deskripsi_kegiatan = $data->deskripsi_kegiatan;
@@ -48,8 +48,8 @@ class Form extends Component
                 $this->hadir = $data->hadir;
                 $this->jumlah_positif = $data->jumlah_positif;
                 $this->jumlah_negatif = $data->jumlah_negatif;
-                $this->id_kabupaten = $data->id_kabupaten;
-                $this->id_kecamatan = $data->id_kecamatan;
+                $this->kabupaten_id = $data->kabupaten_id;
+                $this->kecamatan_id = $data->kecamatan_id;
                 $this->nama_narahubung = $data->nama_narahubung;
                 $this->kontak_narahubung = $data->kontak_narahubung;
             }
@@ -60,7 +60,7 @@ class Form extends Component
     {
         $this->validate();
         CheckHiv::updateOrCreate(
-            ['id_check_hiv' => $this->id_check_hiv],
+            ['id' => $this->id],
             [
                 'nama_kegiatan' => $this->nama_kegiatan,
                 'nama_tempat' => $this->nama_tempat,
@@ -69,8 +69,8 @@ class Form extends Component
                 'hadir' => $this->hadir,
                 'jumlah_positif' => $this->jumlah_positif,
                 'jumlah_negatif' => $this->jumlah_negatif,
-                'id_kabupaten' => $this->id_kabupaten,
-                'id_kecamatan' => $this->id_kecamatan,
+                'kabupaten_id' => $this->kabupaten_id,
+                'kecamatan_id' => $this->kecamatan_id,
                 'nama_narahubung' => $this->nama_narahubung,
                 'kontak_narahubung' => $this->kontak_narahubung,
                 'deleted' => 0
@@ -83,7 +83,7 @@ class Form extends Component
     public function render()
     {
         $kabupatens = Kabupaten::where('deleted', 0)->orderBy('nama')->get();
-        $kecamatans = $this->id_kabupaten ? Kecamatan::where('id_kabupaten', $this->id_kabupaten)->where('deleted', 0)->orderBy('nama')->get() : collect();
+        $kecamatans = $this->kabupaten_id ? Kecamatan::where('kabupaten_id', $this->kabupaten_id)->where('deleted', 0)->orderBy('nama')->get() : collect();
         return view('livewire.check-hiv.form', [
             'kabupatens' => $kabupatens,
             'kecamatans' => $kecamatans

@@ -7,7 +7,7 @@ use App\Models\TipeTb;
 
 class Form extends Component
 {
-    public $id_tipe_tb;
+    public $id;
     public $nama;
     public $deskripsi;
 
@@ -21,7 +21,7 @@ class Form extends Component
         if ($id) {
             $data = TipeTb::find($id);
             if ($data) {
-                $this->id_tipe_tb = $data->id_tipe_tb;
+                $this->id = $data->id;
                 $this->nama = $data->nama;
                 $this->deskripsi = $data->deskripsi;
             }
@@ -32,7 +32,7 @@ class Form extends Component
     {
         $this->validate();
         TipeTb::updateOrCreate(
-            ['id_tipe_tb' => $this->id_tipe_tb],
+            ['id' => $this->id],
             ['nama' => $this->nama, 'deskripsi' => $this->deskripsi, 'deleted' => 0]
         );
         session()->flash('success', 'Tipe TB berhasil disimpan.');

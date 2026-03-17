@@ -9,13 +9,6 @@ class Pekerjaan extends Model
 {
     use HasFactory;
     
-    protected $table = 'mref_pekerjaan';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_pekerjaan';
 
     
     protected $fillable = [

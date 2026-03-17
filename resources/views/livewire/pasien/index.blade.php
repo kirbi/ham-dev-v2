@@ -123,7 +123,7 @@
                             <td class="px-6 py-4">
                                 <div class="flex items-center justify-center gap-2">
                                     <!-- View Button -->
-                                    <a href="{{ route('pasien.show', $pasien->id_pasien) }}" 
+                                    <a href="{{ route('pasien.show', $pasien->id) }}" 
                                        class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
                                        title="Lihat Detail">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,7 +133,7 @@
                                     </a>
 
                                     <!-- Edit Button -->
-                                    <a href="{{ route('pasien.edit', $pasien->id_pasien) }}" 
+                                    <a href="{{ route('pasien.edit', $pasien->id) }}" 
                                        class="text-yellow-600 hover:text-yellow-900 dark:text-yellow-400 dark:hover:text-yellow-300"
                                        title="Edit">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,7 +143,7 @@
 
                                     <!-- Delete Button (Admin only) -->
                                     @if($isAdmin)
-                                        <button wire:click="delete({{ $pasien->id_pasien }})" 
+                                        <button wire:click="delete({{ $pasien->id }})" 
                                                 wire:confirm="Apakah Anda yakin ingin menghapus pasien ini?"
                                                 class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                                                 title="Hapus">

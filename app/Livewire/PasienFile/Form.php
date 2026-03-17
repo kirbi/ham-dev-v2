@@ -8,15 +8,15 @@ use App\Models\Pasien;
 
 class Form extends Component
 {
-    public $id_file;
+    public $id;
     public $nama;
-    public $id_pasien;
+    public $pasien_id;
     public $berkas;
     public $path;
 
     protected $rules = [
         'nama' => 'required',
-        'id_pasien' => 'required|integer',
+        'pasien_id' => 'required|integer',
     ];
 
     public function mount($id = null)
@@ -24,11 +24,11 @@ class Form extends Component
         if ($id) {
             $data = PasienFile::find($id);
             if ($data) {
-                $this->id_file = $data->id_file;
-                $this->nama = $data->nama;
-                $this->id_pasien = $data->id_pasien;
-                $this->berkas = $data->berkas;
-                $this->path = $data->path;
+                $this->id       = $data->id;
+                $this->nama     = $data->nama;
+                $this->pasien_id = $data->pasien_id;
+                $this->berkas   = $data->berkas;
+                $this->path     = $data->path;
             }
         }
     }
@@ -37,13 +37,13 @@ class Form extends Component
     {
         $this->validate();
         PasienFile::updateOrCreate(
-            ['id_file' => $this->id_file],
+            ['id' => $this->id],
             [
-                'nama' => $this->nama,
-                'id_pasien' => $this->id_pasien,
-                'berkas' => $this->berkas,
-                'path' => $this->path,
-                'deleted' => 0
+                'nama'      => $this->nama,
+                'pasien_id' => $this->pasien_id,
+                'berkas'    => $this->berkas,
+                'path'      => $this->path,
+                'deleted'   => 0
             ]
         );
         session()->flash('success', 'File Pasien berhasil disimpan.');

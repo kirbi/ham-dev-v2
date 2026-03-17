@@ -9,5 +9,4 @@ class PenerimaNutrisi extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_penerima_nutrisi';
 }

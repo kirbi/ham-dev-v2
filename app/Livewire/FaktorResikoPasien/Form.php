@@ -9,13 +9,12 @@ use App\Models\Pasien;
 
 class Form extends Component
 {
-    public $id_faktor_resiko_pasien;
-    public $id_pasien;
-    public $id_faktor_resiko;
+    public $pasien_id;
+    public $faktor_resiko_id;
 
     protected $rules = [
-        'id_pasien' => 'required|integer',
-        'id_faktor_resiko' => 'required|integer',
+        'pasien_id' => 'required|integer',
+        'faktor_resiko_id' => 'required|integer',
     ];
 
     public function mount($id = null)
@@ -23,9 +22,8 @@ class Form extends Component
         if ($id) {
             $data = FaktorResikoPasien::find($id);
             if ($data) {
-                $this->id_faktor_resiko_pasien = $data->id_faktor_resiko_pasien;
-                $this->id_pasien = $data->id_pasien;
-                $this->id_faktor_resiko = $data->id_faktor_resiko;
+                $this->pasien_id = $data->pasien_id;
+                $this->faktor_resiko_id = $data->faktor_resiko_id;
             }
         }
     }
@@ -34,15 +32,15 @@ class Form extends Component
     {
         $this->validate();
         FaktorResikoPasien::updateOrCreate(
-            ['id_faktor_resiko_pasien' => $this->id_faktor_resiko_pasien],
+            ['pasien_id' => $this->pasien_id, 'faktor_resiko_id' => $this->faktor_resiko_id],
             [
-                'id_pasien' => $this->id_pasien,
-                'id_faktor_resiko' => $this->id_faktor_resiko,
+                'pasien_id' => $this->pasien_id,
+                'faktor_resiko_id' => $this->faktor_resiko_id,
                 'deleted' => 0
             ]
         );
         session()->flash('success', 'Faktor Resiko Pasien berhasil disimpan.');
-        $this->redirect(route('faktor-resiko-pasien.index'), navigate:true);
+        $this->redirect(route('faktor-resiko-pasien.index'), navigate: true);
     }
 
     public function render()

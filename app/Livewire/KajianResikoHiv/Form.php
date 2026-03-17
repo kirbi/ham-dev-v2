@@ -8,14 +8,14 @@ use App\Models\TingkatResikoHiv;
 
 class Form extends Component
 {
-    public $id_kajian_resiko_hiv;
-    public $id_konseling;
-    public $id_tingkat_resiko_hiv;
+    public $id;
+    public $konseling_hiv_id;
+    public $tingkat_resiko_hiv_id;
     public $tanggal;
 
     protected $rules = [
-        'id_konseling' => 'required|integer',
-        'id_tingkat_resiko_hiv' => 'required|integer',
+        'konseling_hiv_id' => 'required|integer',
+        'tingkat_resiko_hiv_id' => 'required|integer',
         'tanggal' => 'required|date',
     ];
 
@@ -24,9 +24,9 @@ class Form extends Component
         if ($id) {
             $data = KajianResikoHiv::find($id);
             if ($data) {
-                $this->id_kajian_resiko_hiv = $data->id_kajian_resiko_hiv;
-                $this->id_konseling = $data->id_konseling;
-                $this->id_tingkat_resiko_hiv = $data->id_tingkat_resiko_hiv;
+                $this->id = $data->id;
+                $this->konseling_hiv_id = $data->konseling_hiv_id;
+                $this->tingkat_resiko_hiv_id = $data->tingkat_resiko_hiv_id;
                 $this->tanggal = $data->tanggal;
             }
         }
@@ -36,10 +36,10 @@ class Form extends Component
     {
         $this->validate();
         KajianResikoHiv::updateOrCreate(
-            ['id_kajian_resiko_hiv' => $this->id_kajian_resiko_hiv],
+            ['id' => $this->id],
             [
-                'id_konseling' => $this->id_konseling,
-                'id_tingkat_resiko_hiv' => $this->id_tingkat_resiko_hiv,
+                'konseling_hiv_id' => $this->konseling_hiv_id,
+                'tingkat_resiko_hiv_id' => $this->tingkat_resiko_hiv_id,
                 'tanggal' => $this->tanggal,
                 'deleted' => 0
             ]

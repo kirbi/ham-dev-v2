@@ -9,13 +9,6 @@ class StatusTb extends Model
 {
     use HasFactory;
     
-    protected $table = 'mref_status_tb';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_status_tb';
 
     
     protected $fillable = [

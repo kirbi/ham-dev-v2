@@ -9,24 +9,17 @@ class KajianResikoHiv extends Model
 {
     use HasFactory;
     
-    protected $table = 'dpha_kajian_resiko_hiv_konseling';
-    /**
-    * The primary key associated with the table.
-    *
-    * @var string
-    */
-    protected $primaryKey = 'id_kajian_resiko_hiv';
 
     
     protected $fillable = [
-        'deleted', 'id_konseling', 'tanggal', 'id_tingkat_resiko_hiv'
+        'deleted', 'konseling_hiv_id', 'tanggal', 'tingkat_resiko_hiv_id'
     ];
 
     public function konseling(){
-        return $this->belongsTo(Konseling::class, 'id_konseling', 'id_konseling');
+        return $this->belongsTo(Konseling::class, 'konseling_hiv_id');
     }
 
     public function tingkatResiko(){
-        return $this->belongsTo(TingkatResikoHiv::class, 'id_tingkat_resiko_hiv', 'id_tingkat_resiko_hiv');
+        return $this->belongsTo(TingkatResikoHiv::class, 'tingkat_resiko_hiv_id');
     }
 }
